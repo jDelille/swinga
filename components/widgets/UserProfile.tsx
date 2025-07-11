@@ -22,7 +22,7 @@ const UserProfile: React.FC<UserProfileProps> = () => {
         </div>
         <div className={styles.row}>
           <h3>3</h3>
-          <p>Challenges</p>
+          <p>Connections</p>
         </div>
       </div>
     </div>

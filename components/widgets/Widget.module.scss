@@ -2,13 +2,16 @@
 
 .userProfile,
 .lessonPlan,
-.challenges {
+.challenges,
+.weekRecap,
+.finishProfile,
+.notifications {
   background-color: var(--bg-color);
   width: 279px;
   height: 189px;
   border-radius: 6px;
   padding: 10px 1rem;
-    .startMessage {
+  .startMessage {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -20,13 +23,13 @@
       font-weight: 400;
     }
     p {
-        font-size: 14px;
-        text-align: center;
-        color: gray;
-        margin-bottom: 10px;
+      font-size: 14px;
+      text-align: center;
+      color: gray;
+      margin-bottom: 10px;
     }
     button {
-        font-weight: 400;
+      font-weight: 400;
     }
   }
 }
@@ -78,5 +81,57 @@
 
 .challenges {
   height: 250px;
+}
 
+// Right Sidebar
+
+.notifications {
+  height: fit-content;
+  .label {
+    font-size: 12px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    width: 100%;
+    p {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      span {
+        font-size: 10px;
+        color: var(--accent);
+        cursor: pointer;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-left: 15px;
+    .notif {
+      font-size: 13px;
+    }
+    span {
+      font-size: 11px;
+    }
+  }
+}
+
+.finishProfile {
+  height: fit-content;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  ul {
+    list-style-type: square;
+    padding-left: 2rem;
+    font-size: 13px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
 }

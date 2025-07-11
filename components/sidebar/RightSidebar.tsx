@@ -1,13 +1,16 @@
-import React from 'react';
-import styles from './Sidebar.module.scss';
+import React from "react";
+import styles from "./Sidebar.module.scss";
+import Notifications from "../widgets/Notifications";
+import FinishProfileSetup from "../widgets/FinishProfileSetup";
+import Challenges from "../widgets/Challenges";
 
-type RightSidebarProps = {
- 
- }
+type RightSidebarProps = {};
 const RightSidebar: React.FC<RightSidebarProps> = () => {
   return (
-    <div className={styles.sidebar}>
-      
+    <div className={styles.rightSidebar}>
+      <Notifications />
+      <FinishProfileSetup />
+      <Challenges />
     </div>
   );
 };

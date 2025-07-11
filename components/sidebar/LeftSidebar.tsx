@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Sidebar.module.scss';
 import UserProfile from '../widgets/UserProfile';
 import LessonPlan from '../widgets/LessonPlan';
-import Challenges from '../widgets/Challenges';
+import WeekRecap from '../widgets/WeekRecap';
 
 type LeftSidebarProps = {
  
@@ -12,7 +12,8 @@ const LeftSidebar: React.FC<LeftSidebarProps> = () => {
     <div className={styles.sidebar}>
       <UserProfile />
       <LessonPlan />
-      <Challenges />
+            <WeekRecap />
+
     </div>
   );
 };
