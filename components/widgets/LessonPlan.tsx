@@ -3,16 +3,18 @@
 import React from "react";
 import styles from "./Widget.module.scss";
 import Button from "../reusable/button/Button";
+import { useRouter } from "next/navigation";
 
 type LessonPlanProps = {};
 const LessonPlan: React.FC<LessonPlanProps> = () => {
+  const router = useRouter();
 
   const handleCreateLessonPlanClick = () => {
-    console.log("Create lesson plan")
+    router.push("/lesson-plan/create")
   }
 
   const handleViewLessonsClick = () => {
-    console.log("View lesson plans")
+    router.push("/lesson-plan/view")
   }
 
   return (

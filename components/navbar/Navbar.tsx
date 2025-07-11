@@ -6,6 +6,7 @@ import Link from "next/link";
 import Button from "../reusable/button/Button";
 import { BellIcon } from "@/icons";
 import Avatar from "../reusable/avatar/Avatar";
+import ThemeToggle from "../theme-toggle/ThemeToggle";
 
 type NavbarProps = {};
 
@@ -49,6 +50,7 @@ const Navbar: React.FC<NavbarProps> = () => {
         <div className={styles.right}>
             <Button children={"Start Trial"} onClick={handleStartTrialClick}/>
             <BellIcon size={24} color="gray"/>
+            <ThemeToggle />
             <Avatar onClick={handleAvatarClick} size={32}/>
         </div>
       </div>

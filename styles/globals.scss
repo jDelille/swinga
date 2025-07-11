@@ -1,4 +1,4 @@
-@use '../styles/mixins' as mixin;
+@use "../styles/mixins" as mixin;
 
 :root {
   --bg-color: #ffffff;
@@ -8,19 +8,20 @@
   --secondary-bg-color: #f6f6f7;
   --secondary-text-color: #242134;
   --accent: #17b978;
-  --page-bg-color: #F7F7FA;
+  --page-bg-color: #f7f7fa;
+  --shadow: 0px 8px 24px rgba(13, 13, 18, 0.04);
 }
 
 :root[data-theme="dark"] {
-  --bg-color: #ffffff;
-  --text-color: #1a1a1a;
-  --border-color: #ededef;
+  --bg-color: #161618;
+  --text-color: #ffffff;
+  --border-color: #212124;
   --offwhite: #f9f9f9;
   --secondary-bg-color: #f6f6f7;
-  --secondary-text-color: #242134;
+  --secondary-text-color: #d9d9e6;;
   --accent: #17b978;
-    --page-bg-color: #F7F7FA;
-
+  --page-bg-color: #161618;
+  --shadow: 0px 8px 12px rgba(10, 10, 10, 0.2);
 }
 
 * {
@@ -44,9 +45,4 @@ ul {
   flex-direction: column;
   gap: 2rem;
   height: fit-content;
-
-
-
- 
 }
-

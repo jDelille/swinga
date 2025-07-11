@@ -11,6 +11,7 @@
   height: 189px;
   border-radius: 6px;
   padding: 10px 1rem;
+  @include mixin.box-shadow;
   .startMessage {
     display: flex;
     flex-direction: column;
@@ -25,7 +26,7 @@
     p {
       font-size: 14px;
       text-align: center;
-      color: gray;
+      color: var(--secondary-text-color);
       margin-bottom: 10px;
     }
     button {
@@ -43,9 +44,13 @@
     align-items: center;
     width: 50%;
     justify-content: center;
-    h2 {
+    a {
       font-size: 19px;
-      margin-top: 1rem;
+      margin-top: 10px;
+      font-weight: 600;
+      &:hover {
+        text-decoration: underline;
+      }
     }
     p {
       font-size: 12px;
@@ -87,6 +92,7 @@
 
 .notifications {
   height: fit-content;
+  padding-bottom: 10px;
   .label {
     font-size: 12px;
     text-transform: uppercase;
@@ -126,6 +132,8 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+    padding-bottom: 10px;
+
   ul {
     list-style-type: square;
     padding-left: 2rem;

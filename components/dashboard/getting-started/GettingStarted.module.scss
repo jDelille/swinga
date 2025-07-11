@@ -1,9 +1,12 @@
+@use '../../../styles/mixins' as mixin;
+
 .gettingStarted {
     background-color: var(--bg-color);
     width: 100%;
     padding: 2rem;
     border-radius: 6px;
     height: 600px;
+    @include mixin.box-shadow;
     .title {
         display: flex;
         flex-direction: column;
