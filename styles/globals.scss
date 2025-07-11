@@ -1,0 +1,35 @@
+:root {
+  --bg-color: #ffffff;
+  --text-color: #1a1a1a;
+  --border-color: #ededef;
+  --offwhite: #f9f9f9;
+  --secondary-bg-color: #f6f6f7;
+  --secondary-text-color: #242134;
+  --accent: #17b978;
+}
+
+:root[data-theme="dark"] {
+  --bg-color: #ffffff;
+  --text-color: #1a1a1a;
+  --border-color: #ededef;
+  --offwhite: #f9f9f9;
+  --secondary-bg-color: #f6f6f7;
+  --secondary-text-color: #242134;
+  --accent: #17b978;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "poppins";
+}
+
+a {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+ul {
+  list-style-type: none;
+}
