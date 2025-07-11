@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import "../styles/globals.scss";
-import Layout from "@/components/layout/Layout";
 
 export const metadata: Metadata = {
   title: "Swinga",
@@ -24,7 +23,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${poppins.variable}`}>
         <ThemeProvider attribute="data-theme" defaultTheme="light" enableSystem>
-          <Layout children={children} />
+          {children}
         </ThemeProvider>
       </body>
     </html>

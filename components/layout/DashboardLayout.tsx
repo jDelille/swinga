@@ -5,12 +5,12 @@ import LeftSidebar from "../sidebar/LeftSidebar";
 import RightSidebar from "../sidebar/RightSidebar";
 import Footer from "../footer/Footer";
 
-type LayoutProps = {
+type DashboardLayoutProps = {
   children: React.ReactNode;
 };
-const Layout: React.FC<LayoutProps> = ({ children }) => {
+const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   return (
-    <div className={styles.layout}>
+    <div className={styles.dashboardLayout}>
       <Navbar />
       <div className={styles.pageContent}>
         <LeftSidebar />
@@ -24,4 +24,4 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   );
 };
 
-export default Layout;
+export default DashboardLayout;

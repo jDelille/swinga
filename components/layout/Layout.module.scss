@@ -1,6 +1,7 @@
 @use "../../styles/mixins" as mixin;
 
-.layout {
+.singlePageLayout,
+.dashboardLayout {
   background-color: var(--page-bg-color);
   .pageContent {
     @include mixin.site-width;
@@ -9,9 +10,20 @@
     padding-top: 4rem;
     display: flex;
     padding-bottom: 2rem;
+    min-height: 100vh;
 
     main {
       width: 50%;
     }
   }
+}
+
+.singlePageLayout {
+  background-color: var(--bg-color);
+ .pageContent {
+   main {
+    width: 100%;
+    
+  }
+ }
 }
