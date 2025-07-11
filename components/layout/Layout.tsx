@@ -3,6 +3,7 @@ import styles from "./Layout.module.scss";
 import Navbar from "../navbar/Navbar";
 import LeftSidebar from "../sidebar/LeftSidebar";
 import RightSidebar from "../sidebar/RightSidebar";
+import Footer from "../footer/Footer";
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -18,6 +19,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         </main>
         <RightSidebar />
       </div>
+      <Footer />
     </div>
   );
 };

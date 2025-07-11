@@ -1,0 +1,26 @@
+@use "../../styles/mixins" as mixin;
+
+.footer {
+  height: 488px;
+  .content {
+    @include mixin.site-width;
+    height: 100%;
+    margin: 0 auto;
+    .branding {
+      font-size: 30px;
+      font-weight: 600;
+      position: relative;
+      left: 2px;
+      display: flex;
+      flex-direction: column;
+      a {
+        color: gray;
+      }
+      span {
+        font-size: 14px;
+        font-weight: 400;
+        color: var(--text-color);
+      }
+    }
+  }
+}
