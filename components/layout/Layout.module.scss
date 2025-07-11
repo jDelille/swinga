@@ -1,13 +1,15 @@
 @use "../../styles/mixins" as mixin;
 
 .layout {
-    background-color: var(--page-bg-color);
+  background-color: var(--page-bg-color);
   .pageContent {
     @include mixin.site-width;
-    height: 100vh;
+    height: fit-content;
     margin: 0 auto;
-    padding-top: 2rem;
+    padding-top: 4rem;
     display: flex;
+    padding-bottom: 2rem;
+
     main {
       width: 50%;
     }

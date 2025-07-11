@@ -1,8 +1,82 @@
-@use '../../styles/mixins' as mixin;
+@use "../../styles/mixins" as mixin;
+
+.userProfile,
+.lessonPlan,
+.challenges {
+  background-color: var(--bg-color);
+  width: 279px;
+  height: 189px;
+  border-radius: 6px;
+  padding: 10px 1rem;
+    .startMessage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    gap: 10px;
+    h2 {
+      font-size: 16px;
+      font-weight: 400;
+    }
+    p {
+        font-size: 14px;
+        text-align: center;
+        color: gray;
+        margin-bottom: 10px;
+    }
+    button {
+        font-weight: 400;
+    }
+  }
+}
 
 .userProfile {
-    background-color: var(--bg-color);
-    width: 279px;
-    height: 289px;
-    border-radius: 6px;
+  display: flex;
+  gap: 3rem;
+  .left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    justify-content: center;
+    h2 {
+      font-size: 19px;
+      margin-top: 1rem;
+    }
+    p {
+      font-size: 12px;
+      color: gray;
+    }
+  }
+  .right {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    .row {
+      flex: 1;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      &:nth-last-child(1) {
+        border: none;
+      }
+      h2 {
+        font-size: 18px;
+      }
+      p {
+        font-size: 10px;
+      }
+    }
+  }
+}
+
+.lessonPlan {
+  height: 517px;
+}
+
+.challenges {
+  height: 250px;
+
 }

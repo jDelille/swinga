@@ -49,7 +49,7 @@ const Navbar: React.FC<NavbarProps> = () => {
         <div className={styles.right}>
             <Button children={"Start Trial"} onClick={handleStartTrialClick}/>
             <BellIcon size={24} color="gray"/>
-            <Avatar onClick={handleAvatarClick} />
+            <Avatar onClick={handleAvatarClick} size={32}/>
         </div>
       </div>
     </nav>
