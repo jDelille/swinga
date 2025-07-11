@@ -1,0 +1,8 @@
+@use '../../styles/mixins' as mixin;
+
+.userProfile {
+    background-color: var(--bg-color);
+    width: 279px;
+    height: 289px;
+    border-radius: 6px;
+}

@@ -1,3 +1,5 @@
+@use '../styles/mixins' as mixin;
+
 :root {
   --bg-color: #ffffff;
   --text-color: #1a1a1a;
@@ -6,6 +8,7 @@
   --secondary-bg-color: #f6f6f7;
   --secondary-text-color: #242134;
   --accent: #17b978;
+  --page-bg-color: #F7F7FA;
 }
 
 :root[data-theme="dark"] {
@@ -16,6 +19,8 @@
   --secondary-bg-color: #f6f6f7;
   --secondary-text-color: #242134;
   --accent: #17b978;
+    --page-bg-color: #F7F7FA;
+
 }
 
 * {
@@ -33,3 +38,4 @@ a {
 ul {
   list-style-type: none;
 }
+

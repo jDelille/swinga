@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import "../styles/globals.scss";
+import Layout from "@/components/layout/Layout";
 
 export const metadata: Metadata = {
   title: "Swinga",
@@ -20,10 +21,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${poppins.variable}`}>
         <ThemeProvider attribute="data-theme" defaultTheme="light" enableSystem>
-          {children}
+          <Layout children={children} />
         </ThemeProvider>
       </body>
     </html>
