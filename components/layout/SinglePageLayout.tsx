@@ -10,7 +10,7 @@ type SinglePageLayoutProps = {
 const SinglePageLayout: React.FC<SinglePageLayoutProps> = ({ children, isAuth}) => {
   return (
     <div className={styles.singlePageLayout}>
-      <Navbar isAuth  />
+      <Navbar isAuth={isAuth} />
       <div className={styles.pageContent}>
         <main role="main" aria-label="Page content">
           {children}

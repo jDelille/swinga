@@ -7,7 +7,7 @@ const UserLinks: React.FC<UserLinksProps> = () => {
   return (
     <ul className={styles.links}>
       <li>
-        <Link href={"/dashboard"}>Dashboard</Link>
+        <Link href={"/"}>Dashboard</Link>
       </li>
       <li>
         <Link href={"/upload"}>Upload</Link>
