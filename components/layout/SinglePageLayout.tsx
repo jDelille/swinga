@@ -5,11 +5,12 @@ import Footer from "../footer/Footer";
 
 type SinglePageLayoutProps = {
   children: React.ReactNode;
+  isAuth?: boolean;
 };
-const SinglePageLayout: React.FC<SinglePageLayoutProps> = ({ children }) => {
+const SinglePageLayout: React.FC<SinglePageLayoutProps> = ({ children, isAuth}) => {
   return (
     <div className={styles.singlePageLayout}>
-      <Navbar />
+      <Navbar isAuth/>
       <div className={styles.pageContent}>
         <main role="main" aria-label="Page content">
           {children}

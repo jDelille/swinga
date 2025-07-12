@@ -1,20 +1,20 @@
-import LoginForm from "@/components/auth/LoginForm";
+import SignupForm from "@/components/auth/SignupForm";
 import SinglePageLayout from "@/components/layout/SinglePageLayout";
 import React from "react";
 
-type LoginPageProps = {};
-const LoginPage: React.FC<LoginPageProps> = () => {
+type SignupPageProps = {};
+const SignupPage: React.FC<SignupPageProps> = () => {
   return (
     <div className="page">
       <img src={"/auth.jpg"} alt="" className="auth-img" />
 
-      <SinglePageLayout isAuth>
+      <SinglePageLayout>
         <div className="form">
-          <LoginForm />
+          <SignupForm />
         </div>
       </SinglePageLayout>
     </div>
   );
 };
 
-export default LoginPage;
+export default SignupPage;

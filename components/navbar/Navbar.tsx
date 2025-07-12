@@ -7,19 +7,25 @@ import Button from "../reusable/button/Button";
 import { BellIcon } from "@/icons";
 import Avatar from "../reusable/avatar/Avatar";
 import ThemeToggle from "../theme-toggle/ThemeToggle";
+import NoUserLinks from "./NoUserLinks";
+import UserLinks from "./UserLinks";
 
-type NavbarProps = {};
+type NavbarProps = {
+  isAuth?: boolean;
+};
 
-const Navbar: React.FC<NavbarProps> = () => {
+const Navbar: React.FC<NavbarProps> = ({ isAuth }) => {
+  const handleStartTrialClick = () => {
+    console.log("Start Trial...");
+  };
 
-    const handleStartTrialClick = () => {
-        console.log("Start Trial...")
-    }
+  const handleAvatarClick = () => {
+    console.log("Avatar clicked...");
+  };
 
-    const handleAvatarClick = () => {
-        console.log("Avatar clicked...")
-    }
-
+  const handleLoginClick = () => {
+    console.log("Login clicked...");
+  };
 
   return (
     <nav className={styles.navbar}>
@@ -27,31 +33,15 @@ const Navbar: React.FC<NavbarProps> = () => {
         <div className={styles.branding}>
           <Link href={"/"}>SWINGA</Link>
         </div>
-        <ul className={styles.links}>
-          <li>
-            <Link href={"/dashboard"}>Dashboard</Link>
-          </li>
-          <li>
-            <Link href={"/upload"}>Upload</Link>
-          </li>
-          <li>
-            <Link href={"/sessions"}>Sessions</Link>
-          </li>
-          <li>
-            <Link href={"/challenges"}>Challenges</Link>
-          </li>
-          <li>
-            <Link href={"/badges"}>Badges</Link>
-          </li>
-          <li>
-            <Link href={"/profile"}>Profile</Link>
-          </li>
-        </ul>
+        {isAuth ? <NoUserLinks /> : <UserLinks />}
         <div className={styles.right}>
-            <Button children={"Start Trial"} onClick={handleStartTrialClick}/>
-            <BellIcon size={24} color="gray"/>
-            <ThemeToggle />
-            <Avatar onClick={handleAvatarClick} size={32}/>
+          <Button
+            children={isAuth ? "Login" : "Start Trial"}
+            onClick={isAuth ? handleLoginClick : handleStartTrialClick}
+          />
+          {!isAuth && <BellIcon size={24} color="gray" />}
+          <ThemeToggle />
+          {!isAuth && <Avatar onClick={handleAvatarClick} size={32} />}
         </div>
       </div>
     </nav>

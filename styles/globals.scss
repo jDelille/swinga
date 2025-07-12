@@ -45,4 +45,17 @@ ul {
   flex-direction: column;
   gap: 2rem;
   height: fit-content;
+  overflow-x: hidden;
+  .auth-img {
+    position: relative;
+    z-index: 1;
+    position: absolute;
+    object-fit: cover;
+    width: 100%;
+    height: calc(100vh + 55px);
+  }
+
+  .form {
+    height: 100%;
+  }
 }
