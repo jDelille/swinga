@@ -9,12 +9,14 @@ import Avatar from "../reusable/avatar/Avatar";
 import ThemeToggle from "../theme-toggle/ThemeToggle";
 import NoUserLinks from "./NoUserLinks";
 import UserLinks from "./UserLinks";
+import { UserData } from "@/types/userData";
 
 type NavbarProps = {
   isAuth?: boolean;
+  user?: UserData | null;
 };
 
-const Navbar: React.FC<NavbarProps> = ({ isAuth }) => {
+const Navbar: React.FC<NavbarProps> = ({ isAuth, user }) => {
   const handleStartTrialClick = () => {
     console.log("Start Trial...");
   };
@@ -41,7 +43,7 @@ const Navbar: React.FC<NavbarProps> = ({ isAuth }) => {
           />
           {!isAuth && <BellIcon size={24} color="gray" />}
           <ThemeToggle />
-          {!isAuth && <Avatar onClick={handleAvatarClick} size={32} />}
+          {!isAuth && user && <Avatar onClick={handleAvatarClick} size={32} src={user?.avatar}/>}
         </div>
       </div>
     </nav>

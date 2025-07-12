@@ -3,14 +3,13 @@
 .singlePageLayout,
 .dashboardLayout {
   background-color: var(--page-bg-color);
-  
+
   .pageContent {
     @include mixin.site-width;
     height: fit-content;
     margin: 0 auto;
     padding-top: 4rem;
     display: flex;
-    
     min-height: 100vh;
 
     main {
@@ -22,11 +21,15 @@
 .singlePageLayout {
   background-color: var(--bg-color);
 
- .pageContent {
-  
-   main {
-    width: 100%;
-    
+  .pageContent {
+    main {
+      width: 100%;
+    }
   }
- }
+}
+
+.dashboardLayout {
+  .pageContent {
+    padding-bottom: 2rem;
+  }
 }

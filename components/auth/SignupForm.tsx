@@ -42,6 +42,7 @@ const SignupForm: React.FC<SignupFormProps> = () => {
         name: formData.name,
         email: formData.email,
         createdAt: new Date(),
+        level: "Beginner"
       });
 
       console.log("User signed up and document created");
