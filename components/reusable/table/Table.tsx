@@ -13,15 +13,16 @@ import { ShotData } from "@/types/shotData";
 
 type TableProps = {
   shots: ShotData[];
-  setShots: Dispatch<SetStateAction<ShotData[]>>;
+  setShots?: Dispatch<SetStateAction<ShotData[]>>;
+  hideSelect?: boolean;
 };
-const Table: React.FC<TableProps> = ({ shots, setShots }) => {
+const Table: React.FC<TableProps> = ({ shots, setShots, hideSelect }) => {
   const [selectedIds, setSelectedIds] = useState<Set<GridRowId>>(new Set());
   const [displayShots, setDisplayShots] = useState<ShotData[]>(shots);
 
   useEffect(() => {
-  setDisplayShots(shots);
-}, [shots]);
+    setDisplayShots(shots);
+  }, [shots]);
 
   const validClubs = [
     "Driver",
@@ -157,16 +158,17 @@ const Table: React.FC<TableProps> = ({ shots, setShots }) => {
     },
   ];
 
-const handleDeleteShots = () => {
-  setShots((prevShots) =>
-    prevShots.filter((shot) => {
-      const cleanClub = shot.Club.replace(/\s+/g, "-").toLowerCase();
-      const id = `${cleanClub}-${shot.Index}`;
-      return !selectedIds.has(id);
-    })
-  );
-  setSelectedIds(new Set());
-};
+  const handleDeleteShots = () => {
+    setShots &&
+      setShots((prevShots) =>
+        prevShots.filter((shot) => {
+          const cleanClub = shot.Club.replace(/\s+/g, "-").toLowerCase();
+          const id = `${cleanClub}-${shot.Index}`;
+          return !selectedIds.has(id);
+        })
+      );
+    setSelectedIds(new Set());
+  };
 
   return (
     <div className={styles.table}>
@@ -179,7 +181,7 @@ const handleDeleteShots = () => {
         <DataGrid
           rows={rows}
           columns={columns}
-          checkboxSelection
+          checkboxSelection={!hideSelect}
           onRowSelectionModelChange={(selection) => {
             if (typeof selection === "object" && "ids" in selection) {
               setSelectedIds(new Set(selection.ids));
