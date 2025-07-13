@@ -5,14 +5,17 @@ import { ShotData } from "@/types/shotData";
 import { uploadRangeSession } from "@/lib/range-session/uploadRangeSession";
 import { parseRangeCsv } from "@/lib/csv/parseRangeCsv";
 import styles from "./CsvUpload.module.scss";
+import Dropzone from "@/components/reusable/dropzone/Dropzone";
+import Table from "@/components/reusable/table/Table";
 
 type CsvUploadProps = {};
+
 const CsvUpload: React.FC<CsvUploadProps> = () => {
   const [jsonData, setJsonData] = useState<ShotData[]>([]);
   const [uploading, setUploading] = useState(false);
 
-  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
+  const handleDrop = async (files: File[]) => {
+    const file = files[0];
     if (!file) return;
 
     try {
@@ -42,9 +45,17 @@ const CsvUpload: React.FC<CsvUploadProps> = () => {
     }
   };
 
+  console.log(jsonData)
+
   return (
     <div className={styles.csvUpload}>
-      <input type="file" onChange={handleFileChange} accept=".csv" />
+      <Dropzone
+        onDrop={handleDrop}
+        accept={{ "text/csv": [".csv"] }}
+        variant="csv"
+        label="Drag & drop your range session CSV here, or click to browse"
+      />
+
       {jsonData.length > 0 && (
         <div style={{ marginTop: "1rem" }}>
           <button onClick={handleUpload} disabled={uploading}>
@@ -52,6 +63,8 @@ const CsvUpload: React.FC<CsvUploadProps> = () => {
           </button>
         </div>
       )}
+
+      <Table shots={jsonData} setShots={setJsonData} />
     </div>
   );
 };
