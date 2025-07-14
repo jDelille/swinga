@@ -17,5 +17,6 @@
 
 .secondary {
   background-color: var(--bg-color);
-  color: black;
+  color: var(--text-color);
+  border: 1px solid var(--text-color)
 }

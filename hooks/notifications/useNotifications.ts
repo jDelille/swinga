@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { collection, getDocs, query, where, orderBy } from "firebase/firestore";
+import { collection, getDocs, query, orderBy } from "firebase/firestore";
 import { auth, db } from "@/firebase/config";
 import { Notification } from "@/types/notifications";
 
@@ -20,6 +20,7 @@ export const useNotifications = () => {
         );
 
         const snapshot = await getDocs(q);
+        
         const data: Notification[] = snapshot.docs.map((doc) => ({
           id: doc.id,
           ...(doc.data() as Omit<Notification, "id">),
