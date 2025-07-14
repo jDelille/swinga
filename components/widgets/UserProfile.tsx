@@ -9,19 +9,17 @@ import getImports from "@/hooks/range-sessions/getImports";
 
 type UserProfileProps = {
   user: UserData | null;
-  userId: string;
 };
-const UserProfile: React.FC<UserProfileProps> = ({ user, userId }) => {
+const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
   const [numOfImports, setNumOfImports] = useState<number | null>(null);
 
   useEffect(() => {
-    if (!userId) return;
     const fetchImports = async () => {
-      const count = await getImports(userId);
+      const count = await getImports();
       setNumOfImports(count ?? 0);
     };
     fetchImports();
-  }, [userId]);
+  }, []);
 
   if (!user) return null;
 

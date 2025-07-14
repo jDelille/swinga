@@ -7,12 +7,11 @@ import { UserData } from "@/types/userData";
 
 type LeftSidebarProps = {
   user: UserData | null;
-  userId: string;
 };
-const LeftSidebar: React.FC<LeftSidebarProps> = ({ user, userId }) => {
+const LeftSidebar: React.FC<LeftSidebarProps> = ({ user }) => {
   return (
     <div className={styles.sidebar}>
-      <UserProfile user={user} userId={userId} />
+      <UserProfile user={user} />
       <LessonPlan />
       <WeekRecap />
     </div>
