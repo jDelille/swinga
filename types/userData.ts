@@ -4,4 +4,5 @@ export type UserData = {
   avatar?: string;
   email: string;
   createdAt: string;
+  id: string;
 };

@@ -32,11 +32,13 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
     fetchUserData();
   }, [user]);
 
+  if (!user) return;
+
   return (
     <div className={styles.dashboardLayout}>
-      <Navbar user={userData}/>
+      <Navbar user={userData} />
       <div className={styles.pageContent}>
-        <LeftSidebar user={userData} />
+        <LeftSidebar user={userData} userId={user.uid} />
         <main role="main" aria-label="Page content">
           {children}
         </main>

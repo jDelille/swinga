@@ -1,13 +1,28 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import styles from "./Widget.module.scss";
 import Avatar from "../reusable/avatar/Avatar";
 import Link from "next/link";
 import { UserData } from "@/types/userData";
+import getImports from "@/hooks/range-sessions/getImports";
 
 type UserProfileProps = {
   user: UserData | null;
+  userId: string;
 };
-const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
+const UserProfile: React.FC<UserProfileProps> = ({ user, userId }) => {
+  const [numOfImports, setNumOfImports] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (!userId) return;
+    const fetchImports = async () => {
+      const count = await getImports(userId);
+      setNumOfImports(count ?? 0);
+    };
+    fetchImports();
+  }, [userId]);
+
   if (!user) return null;
 
   return (
@@ -19,8 +34,8 @@ const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
       </div>
       <div className={styles.right}>
         <div className={styles.row}>
-          <h2>1</h2>
-          <p>Import</p>
+          <h2>{numOfImports}</h2>
+          <p>{numOfImports && numOfImports > 1 ? "Imports" : "Import"}</p>
         </div>
         <div className={styles.row}>
           <h2>4</h2>
