@@ -3,8 +3,8 @@
 .footer {
   height: fit-content;
   border-top: 1px solid var(--border-color);
-  padding-top: 2rem;
-  height: 300px;
+  padding: 2rem;
+  height: fit-content;
   .content {
     @include mixin.site-width;
     height: 100%;

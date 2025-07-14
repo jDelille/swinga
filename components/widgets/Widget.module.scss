@@ -67,6 +67,9 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      &:hover {
+        cursor: pointer;
+      }
       &:nth-last-child(1) {
         border: none;
       }

@@ -26,6 +26,12 @@ const Footer: React.FC<FooterProps> = () => {
             <li>
               <Link href="/challenges">Challenges</Link>
             </li>
+             <li>
+              <Link href="/lessons">Lessons</Link>
+            </li>
+            <li>
+              <Link href="/weekly-review">Weekly Review</Link>
+            </li>
           </ul>
         </div>
         <div className={styles.column}>
