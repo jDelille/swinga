@@ -6,19 +6,23 @@ import Avatar from "../reusable/avatar/Avatar";
 import Link from "next/link";
 import { UserData } from "@/types/userData";
 import getImports from "@/hooks/range-sessions/getImports";
+import getBadgeCount from "@/hooks/badges/getBadgeCount";
 
 type UserProfileProps = {
   user: UserData | null;
 };
 const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
   const [numOfImports, setNumOfImports] = useState<number | null>(null);
+  const [numOfBadges, setNumOfBadges] = useState<number | null>(null);
 
   useEffect(() => {
-    const fetchImports = async () => {
-      const count = await getImports();
-      setNumOfImports(count ?? 0);
+    const fetchCounts = async () => {
+      const importCount = await getImports();
+      setNumOfImports(importCount ?? 0);
+      const badgeCount = await getBadgeCount();
+      setNumOfBadges(badgeCount ?? 0);
     };
-    fetchImports();
+    fetchCounts();
   }, []);
 
   if (!user) return null;
@@ -36,8 +40,8 @@ const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
           <p>{numOfImports && numOfImports > 1 ? "Imports" : "Import"}</p>
         </div>
         <div className={styles.row}>
-          <h2>4</h2>
-          <p>Badges</p>
+          <h2>{numOfBadges}</h2>
+          <p>{numOfBadges && numOfBadges > 1 ? "Badges" : "Badge"}</p>
         </div>
         <div className={styles.row}>
           <h3>3</h3>
