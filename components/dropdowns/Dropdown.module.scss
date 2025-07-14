@@ -1,0 +1,58 @@
+.notifDropdown {
+  width: 300px;
+  
+  height: fit-content;
+  border-radius: 12px;
+  background-color: white;
+  box-shadow: var(--shadow);
+  position: absolute;
+  top: 50px;
+  right: 0;
+  border: 1px solid var(--border-color);
+  .header {
+    // border-bottom: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 1rem 15px;
+    h2 {
+      font-size: 16px;
+      font-weight: 600; 
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      a {
+        font-size: 10px;
+        font-weight: 400;
+        &:hover {
+            text-decoration: underline;
+            color: var(--accent);
+        }
+      }
+    }
+    p {
+      font-size: 12px;
+    }
+  }
+  .label {
+    padding: 5px 15px;
+    font-size: 12px;
+  }
+  .list {
+    display: flex;
+    flex-direction: column;
+    .notif {
+      font-size: 13px;
+      border-top: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 10px 15;
+      gap: 4px;
+    }
+    span {
+      font-size: 11px;
+    }
+  }
+
+}

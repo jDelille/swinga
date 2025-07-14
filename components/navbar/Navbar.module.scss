@@ -1,5 +1,4 @@
-@use '../../styles/mixins' as mixin;
-
+@use "../../styles/mixins" as mixin;
 
 .navbar {
   height: 55px;
@@ -18,24 +17,35 @@
     align-items: center;
     @include mixin.site-width;
     .branding {
-        font-size: 20px;
-        font-weight: 600;
-        margin-right: 3rem;
+      font-size: 20px;
+      font-weight: 600;
+      margin-right: 3rem;
     }
     .links {
-        display: flex;
-        gap: 2rem;
-        font-size: 14px;
-        
+      display: flex;
+      gap: 2rem;
+      font-size: 14px;
     }
     .right {
-        margin-left: auto;
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      svg {
+        cursor: pointer;
+      }
+      .notifications {
+        position: relative;
         display: flex;
-        align-items: center;
-        gap: 1.75rem;
-        svg {
-            cursor: pointer;
+        .ball {
+          background-color: var(--accent);
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          position: absolute;
+          left: 2px;
         }
+      }
     }
   }
 }

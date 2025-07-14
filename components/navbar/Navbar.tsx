@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Navbar.module.scss";
 import Link from "next/link";
 import Button from "../reusable/button/Button";
@@ -10,6 +10,7 @@ import ThemeToggle from "../theme-toggle/ThemeToggle";
 import NoUserLinks from "./NoUserLinks";
 import UserLinks from "./UserLinks";
 import { UserData } from "@/types/userData";
+import NotificationDropdown from "../dropdowns/NotificationDropdown";
 
 type NavbarProps = {
   isAuth?: boolean;
@@ -17,6 +18,8 @@ type NavbarProps = {
 };
 
 const Navbar: React.FC<NavbarProps> = ({ isAuth, user }) => {
+  const [showNotifications, setShowNotifications] = useState(false);
+
   const handleStartTrialClick = () => {
     console.log("Start Trial...");
   };
@@ -27,6 +30,10 @@ const Navbar: React.FC<NavbarProps> = ({ isAuth, user }) => {
 
   const handleLoginClick = () => {
     console.log("Login clicked...");
+  };
+
+  const handleNotificationClick = () => {
+    setShowNotifications(!showNotifications);
   };
 
   return (
@@ -41,9 +48,22 @@ const Navbar: React.FC<NavbarProps> = ({ isAuth, user }) => {
             children={isAuth ? "Login" : "Start Trial"}
             onClick={isAuth ? handleLoginClick : handleStartTrialClick}
           />
-          {!isAuth && <BellIcon size={24} color="gray" />}
+          {!isAuth && (
+              <div className={styles.notifications}>
+                <BellIcon
+                  size={24}
+                  color="gray"
+                  onClick={handleNotificationClick}
+                />
+
+                {showNotifications && <NotificationDropdown />}
+                <div className={styles.ball}></div>
+              </div>
+          )}
           <ThemeToggle />
-          {!isAuth && user && <Avatar onClick={handleAvatarClick} size={32} src={user?.avatar}/>}
+          {!isAuth && user && (
+            <Avatar onClick={handleAvatarClick} size={32} src={user?.avatar} />
+          )}
         </div>
       </div>
     </nav>

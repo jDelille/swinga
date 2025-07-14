@@ -3,7 +3,6 @@
 import React from "react";
 import styles from "./Widget.module.scss";
 import { useNotifications } from "@/hooks/notifications/useNotifications";
-import { formatDateShort } from "@/hooks/format-date/formatDateShort";
 
 type NotificationsProps = {};
 
@@ -17,18 +16,7 @@ const Notifications: React.FC<NotificationsProps> = () => {
           Notifications <span>Show More</span>
         </p>
       </div>
-      <div className={styles.list}>
-        {notifications.map((notif, index) => {
-          if (index < 3) {
-            return (
-              <div className={styles.notif} key={notif.id}>
-                <p>{notif.message}</p>
-                <span>{formatDateShort(notif.createdAt)}</span>
-              </div>
-            );
-          }
-        })}
-      </div>
+      
     </div>
   );
 };
