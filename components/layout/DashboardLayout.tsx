@@ -42,7 +42,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
         <main role="main" aria-label="Page content">
           {children}
         </main>
-        <RightSidebar />
+        <RightSidebar user={userData} />
       </div>
       <Footer />
     </div>

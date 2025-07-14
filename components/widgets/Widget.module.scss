@@ -115,7 +115,6 @@
       }
     }
   }
-
 }
 
 .finishProfile {
@@ -124,14 +123,39 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-    padding-bottom: 10px;
-
+  padding: 1rem;
+  p {
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    span {
+      font-size: 14px;
+      font-weight: 600;
+    }
+  }
+  .progressBar {
+    width: 100%;
+    height: 5px;
+    border-radius: 50px;
+    background-color: lightgray;
+    margin-bottom: 10px;
+    .progress {
+      background-color: var(--accent);
+      width: 40%;
+      height: 100%;
+      border-radius: 50px;
+    }
+  }
   ul {
-    list-style-type: square;
-    padding-left: 2rem;
     font-size: 13px;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 10px;
+    li {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
   }
 }

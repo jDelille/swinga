@@ -5,4 +5,12 @@ export type UserData = {
   email: string;
   createdAt: string;
   id: string;
+  clubs: {}[];
+  profileSetup: {
+    addedClubData: boolean;
+    addedHanicap: boolean;
+    addedLocation: boolean;
+    addedSession: boolean;
+    verified: boolean;
+  }
 };
