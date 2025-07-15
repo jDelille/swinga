@@ -4,6 +4,7 @@
   height: fit-content;
   border-top: 1px solid var(--border-color);
   padding: 2rem;
+  background-color: var(--bg-color);
   height: fit-content;
   .content {
     @include mixin.site-width;

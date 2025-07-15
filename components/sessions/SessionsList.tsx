@@ -66,11 +66,13 @@ const SessionsList: React.FC<SessionsProps> = () => {
     fetchSessions();
   }, [user]);
 
+  console.log(sessions)
+
   return (
     <div className={styles.sessions}>
       <h2>Sessions</h2>
       {sessions.map((session) => (
-        <Session shots={session.shots} key={session.id}/>
+        <Session session={session} key={session.id}/>
       ))}
     </div>
   );
