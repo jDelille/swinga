@@ -15,7 +15,6 @@ export function getClubsUsedWithCounts(shots: ShotData[]): ClubUsage[] {
   return useMemo(() => {
     const clubMap: Record<string, number> = {};
 
-    // Count usage
     shots.forEach((shot) => {
       const clubName = shot.Club?.trim();
       if (!clubName) return;
@@ -27,7 +26,6 @@ export function getClubsUsedWithCounts(shots: ShotData[]): ClubUsage[] {
       count,
     }));
 
-    // Priority order for sorting
     const clubPriority = [
       "Driver",
       "3 Wood",
@@ -42,24 +40,22 @@ export function getClubsUsedWithCounts(shots: ShotData[]): ClubUsage[] {
       "8 Iron",
       "9 Iron",
       "P-Wedge",
-      "Gap Wedge",
-      "Sand Wedge",
-      "Lob Wedge",
+      "G-Wedge",
+      "S-Wedge",
+      "L-Wedge",
       "Putter",
     ];
 
-    // Sort by clubPriority first, fallback to alphabetical
     const sorted = unordered.sort((a, b) => {
       const aIndex = clubPriority.indexOf(a.club);
       const bIndex = clubPriority.indexOf(b.club);
 
       if (aIndex === -1 && bIndex === -1) {
-        // neither is in priority list → alphabetical
         return a.club.localeCompare(b.club);
       }
-      if (aIndex === -1) return 1; // put unknowns last
+      if (aIndex === -1) return 1; 
       if (bIndex === -1) return -1;
-      return aIndex - bIndex; // sort by priority order
+      return aIndex - bIndex; 
     });
 
     return sorted;

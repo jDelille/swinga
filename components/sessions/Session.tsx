@@ -16,7 +16,7 @@ const Session: React.FC<SessionProps> = ({ session }) => {
           <p>{formatDateLong(session.createdAt)}</p>
         </div>
         <p className={styles.count}>{session.shotCount} shots</p>
-
+ </div>
         <div className={styles.clubs}>
           {clubsUsage.map(({ club, count }, index) => (
             <ul key={index}>
@@ -27,7 +27,7 @@ const Session: React.FC<SessionProps> = ({ session }) => {
             </ul>
           ))}
         </div>
-      </div>
+     
     </div>
   );
 };
