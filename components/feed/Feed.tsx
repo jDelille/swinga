@@ -13,8 +13,8 @@ const Feed: React.FC<FeedProps> = () => {
 
   return (
     <div className={styles.feed}>
-      {posts.map((post) => {
-        if (post.details.itemName) return <Post post={post} />;
+      {posts.map((post, index) => {
+        if (post.details.itemName) return <Post post={post} key={index} />;
       })}
     </div>
   );

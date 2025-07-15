@@ -33,7 +33,7 @@ const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
   return (
     <div className={styles.userProfile}>
       <div className={styles.left}>
-        <Avatar size={90} src={user.avatar} />
+        <Avatar size={90} src={user.avatar} redirect onClick={() => router.push("/profile")}/>
         <Link href={"/profile"}>{user.name}</Link>
         <p>{user.level}</p>
       </div>

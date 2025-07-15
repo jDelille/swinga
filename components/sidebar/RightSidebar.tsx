@@ -12,7 +12,7 @@ type RightSidebarProps = {
 const RightSidebar: React.FC<RightSidebarProps> = ({user}) => {
   return (
     <div className={styles.rightSidebar}>
-      <Notifications />
+      {/* <Notifications /> */}
       <FinishProfileSetup user={user}/>
       <Challenges />
     </div>

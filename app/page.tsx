@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <div className="page">
       <DashboardLayout>
-        <Feed />
+        {/* <Feed /> */}
       </DashboardLayout>
     </div>
   );
