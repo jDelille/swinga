@@ -11,10 +11,12 @@ import { formatDateMedium } from "@/hooks/format-date/formatDateMedium";
 import { EditIcon } from "@/icons";
 import getImports from "@/hooks/range-sessions/getImports";
 import getBadgeCount from "@/hooks/badges/getBadgeCount";
+import { useRouter } from "next/navigation";
 
 type UserOverviewProps = {};
 const UserOverview: React.FC<UserOverviewProps> = () => {
   const [user] = useAuthState(auth);
+  const router = useRouter();
   
   const [userData, setUserData] = useState<UserData | null>(null);
   const [numOfImports, setNumOfImports] = useState<number | null>(null);
@@ -44,7 +46,7 @@ const UserOverview: React.FC<UserOverviewProps> = () => {
     <div className={styles.userOverview}>
       <div className={styles.avatarContainer}>
         <Avatar size={80} src={userData.avatar} />
-        <EditIcon size={26} color="gray"/>
+        <EditIcon size={26} color="gray" onClick={() => router.push('/profile/edit')}/>
       </div>
       <div className={styles.text}>
         <h2>{userData.name}</h2>

@@ -1,0 +1,34 @@
+.editBag {
+    ul {
+        margin-top: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        li {
+            cursor: pointer;
+            // border-bottom: 1px solid var(--border-color);
+            padding: 10px 0;
+            .club {
+                display: flex;
+                width: 300px;
+                justify-content: space-between;
+                .type {
+                    display: flex;
+                    flex-direction: column;
+                    font-size: 14px;
+                    span {
+                        font-size: 12px;
+                    }
+                }
+                .yards {
+                    font-size: 14px;
+                    font-weight: 600;
+                    span {
+                        font-size: 12px;
+                        font-weight: 400;
+                    }
+                }
+            }
+        }
+    }
+}

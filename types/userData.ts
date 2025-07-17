@@ -11,7 +11,7 @@ export type UserData = {
   location: string;
   profileSetup: {
     addedClubData: boolean;
-    addedHanicap: boolean;
+    addedHandicap: boolean;
     addedLocation: boolean;
     addedSession: boolean;
     verified: boolean;

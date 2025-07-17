@@ -22,7 +22,7 @@ const FinishProfileSetup: React.FC<FinishProfileSetupProps> = ({ user }) => {
     },
     {
       label: "Add your handicap",
-      completed: !!user.profileSetup.addedHanicap
+      completed: !!user.profileSetup.addedHandicap
     },
     {
       label: "Add your club data",

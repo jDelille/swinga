@@ -5,10 +5,12 @@ import Button from "../reusable/button/Button";
 import Link from "next/link";
 import { GoogleIcon } from "@/icons";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
+import { collection, doc, serverTimestamp, setDoc } from "firebase/firestore";
 import { auth, db } from "@/firebase/config";
 import { useRouter } from "next/navigation";
 import styles from "./Form.module.scss";
+import { GOLF_CLUBS } from "@/constants/golfClubs";
+import { createDefaultGolfBag } from "@/firebase/collections/golfBag";
 
 type SignupFormProps = {};
 
@@ -24,6 +26,8 @@ const SignupForm: React.FC<SignupFormProps> = () => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
+  
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -44,6 +48,8 @@ const SignupForm: React.FC<SignupFormProps> = () => {
         createdAt: new Date(),
         level: "Beginner"
       });
+
+      await createDefaultGolfBag(user.uid);
 
       console.log("User signed up and document created");
       router.push("/")

@@ -1,0 +1,15 @@
+export const GOLF_CLUBS = [
+  { name: "Driver", type: "wood", loft: 9 },
+  { name: "3 Wood", type: "wood", loft: 15 },
+  { name: "5 Wood", type: "wood", loft: 18 },
+  { name: "4 Iron", type: "iron", loft: 23 },
+  { name: "5 Iron", type: "iron", loft: 26 },
+  { name: "6 Iron", type: "iron", loft: 30 },
+  { name: "7 Iron", type: "iron", loft: 34 },
+  { name: "8 Iron", type: "iron", loft: 38 },
+  { name: "9 Iron", type: "iron", loft: 42 },
+  { name: "Pitching Wedge", type: "wedge", loft: 46 },
+  { name: "Gap Wedge", type: "wedge", loft: 50 },
+  { name: "Sand Wedge", type: "wedge", loft: 54 },
+  { name: "Lob Wedge", type: "wedge", loft: 58 },
+];
