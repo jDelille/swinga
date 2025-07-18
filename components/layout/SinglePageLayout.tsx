@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./Layout.module.scss";
 import Navbar from "../navbar/Navbar";
 import Footer from "../footer/Footer";
-import Modal from "../modal/Modal";
 
 type SinglePageLayoutProps = {
   children: React.ReactNode;
