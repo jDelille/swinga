@@ -59,6 +59,8 @@ const UserOverview: React.FC<UserOverviewProps> = () => {
         <h2>{userData.name}</h2>
         <h3>{userData.location}</h3>
         <p>Member since {formatDateMedium(userData.createdAt)}</p>
+
+        <p className={styles.bio}>{userData.bio}</p>
       </div>
 
       <div className={styles.stats}>

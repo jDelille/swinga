@@ -1,5 +1,5 @@
 import SettingsLayout from '@/components/layout/SettingsLayout';
-import SinglePageLayout from '@/components/layout/SinglePageLayout';
+import EditProfile from '@/components/profile/edit-profile/EditProfile';
 import React from 'react';
 
 type EditProfilePageProps = {
@@ -8,9 +8,9 @@ type EditProfilePageProps = {
 const EditProfilePage: React.FC<EditProfilePageProps> = () => {
   return (
     <div className="page">
-      <SinglePageLayout>
-        <h2>Edit Profile</h2>
-      </SinglePageLayout>
+      <SettingsLayout>
+        <EditProfile />
+      </SettingsLayout>
     </div>
   );
 };

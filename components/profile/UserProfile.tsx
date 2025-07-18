@@ -40,7 +40,7 @@ const UserProfile: React.FC<UserProfileProps> = () => {
   return (
     <div className={styles.userProfile}>
       <UserOverview />
-      <UserActivity />
+      {/* <UserActivity /> */}
       <Modal
         isOpen={modals["golfBag"]}
         title={"Your Golf Bag"}

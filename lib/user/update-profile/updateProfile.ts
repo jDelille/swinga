@@ -16,7 +16,27 @@ export async function updateUserProfile(
 
   const userRef = doc(db, "users", uid);
 
-  await updateDoc(userRef, updatedData);
+  const profileSetupUpdates: Record<string, boolean> = {};
+
+  if (updatedData.location !== undefined) {
+    profileSetupUpdates["profileSetup.addedLocation"] = true;
+  }
+  if (updatedData.handicap !== undefined) {
+    profileSetupUpdates["profileSetup.addedHandicap"] = true;
+  }
+  if (updatedData.favoriteCourse !== undefined) {
+    profileSetupUpdates["profileSetup.addedClubData"] = true;
+  }
+  if (updatedData.name !== undefined || updatedData.email !== undefined || updatedData.bio !== undefined) {
+    profileSetupUpdates["profileSetup.addedSession"] = true;
+  }
+
+  const mergedUpdate = {
+    ...updatedData,
+    ...profileSetupUpdates,
+  };
+
+  await updateDoc(userRef, mergedUpdate);
 
   return true;
 }
