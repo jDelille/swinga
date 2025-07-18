@@ -9,6 +9,9 @@ export type UserData = {
   id: string;
   clubs: {}[];
   location: string;
+  bio: string;
+  favoriteCourse: string;
+  handicap: string;
   profileSetup: {
     addedClubData: boolean;
     addedHandicap: boolean;

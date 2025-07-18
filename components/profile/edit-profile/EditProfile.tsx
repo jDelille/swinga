@@ -15,9 +15,13 @@ import {
   ShieldHalf,
   UserRound,
 } from "lucide-react";
+import { UserData } from "@/types/userData";
 
-type EditProfileProps = {};
-const EditProfile: React.FC<EditProfileProps> = () => {
+type EditProfileProps = {
+  user: UserData | null;
+  userUid: string | undefined;
+};
+const EditProfile: React.FC<EditProfileProps> = ({user, userUid}) => {
   const router = useRouter();
 
 const [activeSection, setActiveSection] = useState<string>("Account Information");
@@ -75,7 +79,7 @@ const [activeSection, setActiveSection] = useState<string>("Account Information"
             ))}
           </ul>
         </aside>
-        {activeSection === "Account Information" && <AccountInformation />}
+        {activeSection === "Account Information" && <AccountInformation user={user} userUid={userUid}/>}
         {activeSection === "Playing Profile" && <PlayingProfile />}
         {activeSection === "Login & Security" && <LoginAndSecurity />}
       </div>

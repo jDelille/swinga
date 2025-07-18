@@ -34,7 +34,6 @@
     padding: 2rem 0;
     h2 {
       font-weight: 600;
-      
     }
     ul {
       margin-top: 2rem;
@@ -52,7 +51,6 @@
         font-weight: 400;
         cursor: pointer;
         gap: 1rem;
-        
       }
       .active {
         background-color: var(--activeBgColor);
@@ -100,5 +98,21 @@
         }
       }
     }
+  }
+}
+
+.editField {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  .editInput {
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    margin-top: 10px;
+  }
+
+  button {
+    width: fit-content;
   }
 }
