@@ -10,6 +10,7 @@
   --accent: #17b978;
   --page-bg-color: #f7f7fa;
   --shadow: 0px 8px 24px rgba(13, 13, 18, 0.04);
+  --activeBgColor: #F2F2F2;
 }
 
 :root[data-theme="dark"] {
@@ -22,6 +23,7 @@
   --accent: #17b978;
   --page-bg-color: #161618;
   --shadow: none;
+  --activeBgColor: #000;
 }
 
 * {

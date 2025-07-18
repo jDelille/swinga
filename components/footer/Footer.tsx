@@ -88,6 +88,9 @@ const Footer: React.FC<FooterProps> = () => {
             <li>
               <Link href="/contact">Contact</Link>
             </li>
+            <li>
+              <Link href={"https://github.com/jDelille/swinga"} target="blank">Github</Link>
+            </li>
           </ul>
         </div>
       </div>
