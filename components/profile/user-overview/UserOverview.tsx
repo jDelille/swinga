@@ -12,12 +12,15 @@ import { EditIcon } from "@/icons";
 import getImports from "@/hooks/range-sessions/getImports";
 import getBadgeCount from "@/hooks/badges/getBadgeCount";
 import { useRouter } from "next/navigation";
+import { useModalStore } from "@/store/useModalStore";
 
 type UserOverviewProps = {};
 const UserOverview: React.FC<UserOverviewProps> = () => {
   const [user] = useAuthState(auth);
   const router = useRouter();
-  
+
+  const { modals, openModal, closeModal } = useModalStore();
+
   const [userData, setUserData] = useState<UserData | null>(null);
   const [numOfImports, setNumOfImports] = useState<number | null>(null);
   const [numOfBadges, setNumOfBadges] = useState<number | null>(null);
@@ -46,7 +49,11 @@ const UserOverview: React.FC<UserOverviewProps> = () => {
     <div className={styles.userOverview}>
       <div className={styles.avatarContainer}>
         <Avatar size={80} src={userData.avatar} />
-        <EditIcon size={26} color="gray" onClick={() => router.push('/profile/edit')}/>
+        <EditIcon
+          size={26}
+          color="gray"
+          onClick={() => router.push("/profile/edit")}
+        />
       </div>
       <div className={styles.text}>
         <h2>{userData.name}</h2>
@@ -71,7 +78,7 @@ const UserOverview: React.FC<UserOverviewProps> = () => {
 
       <div className={styles.buttons}>
         <button>Stats</button>
-        <button>Golf Bag</button>
+        <button onClick={() => openModal("golfBag")}>Golf Bag</button>
       </div>
     </div>
   );

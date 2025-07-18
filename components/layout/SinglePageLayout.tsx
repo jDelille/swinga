@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Layout.module.scss";
 import Navbar from "../navbar/Navbar";
 import Footer from "../footer/Footer";
+import Modal from "../modal/Modal";
 
 type SinglePageLayoutProps = {
   children: React.ReactNode;
@@ -16,6 +17,7 @@ const SinglePageLayout: React.FC<SinglePageLayoutProps> = ({ children, isAuth}) 
           {children}
         </main>
       </div>
+
       <Footer />
     </div>
   );
