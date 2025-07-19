@@ -7,44 +7,20 @@ import AccountInformation from "./sections/AccountInformation";
 import PlayingProfile from "./sections/PlayingProfile";
 import { useRouter } from "next/navigation";
 import LoginAndSecurity from "./sections/LoginAndSecurity";
-import {
-  Bell,
-  Columns3Cog,
-  GlobeLock,
-  LandPlot,
-  ShieldHalf,
-  UserRound,
-} from "lucide-react";
-import { UserData } from "@/types/userData";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth, db } from "@/firebase/config";
-import { doc, getDoc } from "firebase/firestore";
+import { auth } from "@/firebase/config";
 import { sections } from "@/constants/accountSettings";
+import { useUser } from "@/hooks/user/useUser";
 
 type EditProfileProps = {};
 const EditProfile: React.FC<EditProfileProps> = () => {
   const router = useRouter();
   const [user] = useAuthState(auth);
-  const [userData, setUserData] = useState<UserData | null>(null);
   const [activeSection, setActiveSection] = useState<string>(
     "Account Information"
   );
 
-  useEffect(() => {
-    if (!user) return;
-
-    const fetchUserData = async () => {
-      const ref = doc(db, "users", user.uid);
-      const snap = await getDoc(ref);
-      if (snap.exists()) {
-        setUserData(snap.data() as UserData);
-      }
-    };
-
-    fetchUserData();
-  }, [user]);
-
-
+  const {userData} = useUser();
 
   return (
     <>

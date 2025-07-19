@@ -13,6 +13,7 @@ import getImports from "@/hooks/range-sessions/getImports";
 import getBadgeCount from "@/hooks/badges/getBadgeCount";
 import { useRouter } from "next/navigation";
 import { useModalStore } from "@/store/useModalStore";
+import { Pencil } from "lucide-react";
 
 type UserOverviewProps = {};
 const UserOverview: React.FC<UserOverviewProps> = () => {
@@ -49,8 +50,8 @@ const UserOverview: React.FC<UserOverviewProps> = () => {
     <div className={styles.userOverview}>
       <div className={styles.avatarContainer}>
         <Avatar size={80} src={userData.avatar} />
-        <EditIcon
-          size={26}
+        <Pencil 
+          size={20}
           color="gray"
           onClick={() => router.push("/profile/edit")}
         />

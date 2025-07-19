@@ -67,7 +67,7 @@ const Navbar: React.FC<NavbarProps> = ({ isAuth, user }) => {
             </div>
           )}
           <ThemeToggle />
-          {!isAuth && user && (
+          {!isAuth && (
             <Avatar
               onClick={() => router.push("/profile")}
               size={32}
