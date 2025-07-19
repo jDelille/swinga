@@ -11,6 +11,9 @@ import NoUserLinks from "./NoUserLinks";
 import UserLinks from "./UserLinks";
 import { UserData } from "@/types/userData";
 import NotificationDropdown from "../dropdowns/NotificationDropdown";
+import SettingsDropdown from "../dropdowns/SettingsDropdown";
+import { Menu } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 type NavbarProps = {
   isAuth?: boolean;
@@ -19,13 +22,16 @@ type NavbarProps = {
 
 const Navbar: React.FC<NavbarProps> = ({ isAuth, user }) => {
   const [showNotifications, setShowNotifications] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
+
+  const router = useRouter();
 
   const handleStartTrialClick = () => {
     console.log("Start Trial...");
   };
 
-  const handleAvatarClick = () => {
-    console.log("Avatar clicked...");
+  const handleSettingsClick = () => {
+    setShowSettings(!showSettings);
   };
 
   const handleLoginClick = () => {
@@ -49,21 +55,32 @@ const Navbar: React.FC<NavbarProps> = ({ isAuth, user }) => {
             onClick={isAuth ? handleLoginClick : handleStartTrialClick}
           />
           {!isAuth && (
-              <div className={styles.notifications}>
-                <BellIcon
-                  size={24}
-                  color="gray"
-                  onClick={handleNotificationClick}
-                />
+            <div className={styles.notifications}>
+              <BellIcon
+                size={24}
+                color="gray"
+                onClick={handleNotificationClick}
+              />
 
-                {showNotifications && <NotificationDropdown />}
-                <div className={styles.ball}></div>
-              </div>
+              {showNotifications && <NotificationDropdown />}
+              <div className={styles.ball}></div>
+            </div>
           )}
           <ThemeToggle />
           {!isAuth && user && (
-            <Avatar onClick={handleAvatarClick} size={32} src={user?.avatar} />
+            <Avatar
+              onClick={() => router.push("/profile")}
+              size={32}
+              src={user?.avatar}
+            />
           )}
+
+          <div className={styles.settings}>
+            <div className={styles.burger} onClick={handleSettingsClick}>
+              <Menu size={16} color="black" />
+            </div>
+            {showSettings && <SettingsDropdown />}
+          </div>
         </div>
       </div>
     </nav>

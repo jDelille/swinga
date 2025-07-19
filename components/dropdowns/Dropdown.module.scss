@@ -1,6 +1,6 @@
-.notifDropdown {
+.notifDropdown,
+.settingsDropdown {
   width: 300px;
-  
   height: fit-content;
   border-radius: 12px;
   background-color: var(--bg-color);
@@ -55,4 +55,23 @@
     }
   }
 
+}
+
+.settingsDropdown {
+  padding: 1rem;
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    li {
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      svg {
+        width: 15px;
+      }
+    }
+  }
 }
