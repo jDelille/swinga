@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "./EditProfile.module.scss";
 import Button from "@/components/reusable/button/Button";
 import AccountInformation from "./sections/AccountInformation";

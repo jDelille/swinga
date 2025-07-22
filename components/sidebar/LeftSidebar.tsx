@@ -3,15 +3,12 @@ import styles from "./Sidebar.module.scss";
 import UserProfile from "../widgets/UserProfile";
 import LessonPlan from "../widgets/LessonPlan";
 import WeekRecap from "../widgets/WeekRecap";
-import { UserData } from "@/types/userData";
 
-type LeftSidebarProps = {
-  user: UserData | null;
-};
-const LeftSidebar: React.FC<LeftSidebarProps> = ({ user }) => {
+type LeftSidebarProps = {};
+const LeftSidebar: React.FC<LeftSidebarProps> = () => {
   return (
     <div className={styles.sidebar}>
-      <UserProfile user={user} />
+      <UserProfile />
       <LessonPlan />
       <WeekRecap />
     </div>

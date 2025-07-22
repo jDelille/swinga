@@ -1,39 +1,34 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styles from "./Widget.module.scss";
 import Avatar from "../reusable/avatar/Avatar";
 import Link from "next/link";
 import { UserData } from "@/types/userData";
-import getImports from "@/hooks/range-sessions/getImports";
-import getBadgeCount from "@/hooks/badges/getBadgeCount";
 import { useRouter } from "next/navigation";
+import { useUser } from "@/hooks/user/useUser";
 
-type UserProfileProps = {
-  user: UserData | null;
-};
-const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
-  const [numOfImports, setNumOfImports] = useState<number | null>(null);
-  const [numOfBadges, setNumOfBadges] = useState<number | null>(null);
+type UserProfileProps = {};
+const UserProfile: React.FC<UserProfileProps> = () => {
+  const { userData, numOfImports, numOfBadges, loading } = useUser({
+    includeCounts: true,
+  });
 
   const router = useRouter();
 
-  useEffect(() => {
-    const fetchCounts = async () => {
-      const importCount = await getImports();
-      setNumOfImports(importCount ?? 0);
-      const badgeCount = await getBadgeCount();
-      setNumOfBadges(badgeCount ?? 0);
-    };
-    fetchCounts();
-  }, []);
+  const user = userData;
 
   if (!user) return null;
 
   return (
     <div className={styles.userProfile}>
       <div className={styles.left}>
-        <Avatar size={90} src={user.avatar} redirect onClick={() => router.push("/profile")}/>
+        <Avatar
+          size={90}
+          src={user.avatar}
+          redirect
+          onClick={() => router.push("/profile")}
+        />
         <Link href={"/profile"}>{user.name}</Link>
         <p>{user.level}</p>
       </div>
