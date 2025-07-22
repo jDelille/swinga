@@ -11,7 +11,8 @@
   height: 189px;
   border-radius: 6px;
   padding: 10px 1rem;
-  @include mixin.box-shadow;
+  // @include mixin.box-shadow;
+  border: 1px solid var(--border-color);
   .startMessage {
     display: flex;
     flex-direction: column;

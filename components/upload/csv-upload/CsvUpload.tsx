@@ -57,7 +57,7 @@ const CsvUpload: React.FC<CsvUploadProps> = () => {
       />
 
       {jsonData.length > 0 && (
-        <div style={{ marginTop: "1rem" }}>
+        <div className={styles.csvUploadText}>
           <button onClick={handleUpload} disabled={uploading}>
             {uploading ? "Uploading..." : "Upload Session"}
           </button>
