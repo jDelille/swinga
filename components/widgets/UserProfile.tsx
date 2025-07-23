@@ -4,7 +4,6 @@ import React from "react";
 import styles from "./Widget.module.scss";
 import Avatar from "../reusable/avatar/Avatar";
 import Link from "next/link";
-import { UserData } from "@/types/userData";
 import { useRouter } from "next/navigation";
 import { useUser } from "@/hooks/user/useUser";
 

@@ -16,15 +16,19 @@
       }
       h3 {
         font-size: 16px;
+      
       }
       button {
         text-align: center;
-        
         border: 1px solid var(--border-color);
-        padding: 10px 15px;
+        padding: 10px 10px;
         font-size: 14px;
         width: 100%;
         font-weight: 400;
       }
     }
+  }
+
+  .deviceModal {
+    padding: 0 24px;
   }

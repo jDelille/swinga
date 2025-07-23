@@ -1,4 +1,5 @@
 export type ShotData = {
+  id: string;
   Club: string;
   Index: string;
   ["Ball Speed(mph)"]: string;

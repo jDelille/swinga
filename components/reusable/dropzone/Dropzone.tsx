@@ -4,6 +4,7 @@ import React, { useCallback } from "react";
 import clsx from "clsx";
 import { useDropzone } from "react-dropzone";
 import styles from "./Dropzone.module.scss";
+import { Upload } from "lucide-react";
 
 type DropzoneProps = {
   onDrop: (files: File[]) => void;
@@ -11,7 +12,6 @@ type DropzoneProps = {
   multiple?: boolean;
   variant?: "default" | "csv" | "image" | "compact";
   className?: string;
-  label?: string;
 };
 
 const Dropzone: React.FC<DropzoneProps> = ({
@@ -20,7 +20,6 @@ const Dropzone: React.FC<DropzoneProps> = ({
   multiple,
   variant = "default",
   className,
-  label,
 }) => {
   const handleDrop = useCallback(
     (acceptedFiles: File[]) => {
@@ -45,8 +44,10 @@ const Dropzone: React.FC<DropzoneProps> = ({
         className
       )}
     >
+      <Upload size={24} color="gray" />
       <input {...getInputProps()} />
-      <p>{label}</p>
+      <p>Drag & Drop or <span>Choose file</span> to upload</p>
+      <p className={styles.format}>(format .{variant})</p>
     </div>
   )
 };

@@ -3,7 +3,7 @@
 import React from "react";
 import styles from "./DeviceGrid.module.scss";
 import Button from "@/components/reusable/button/Button";
-import { useRouter } from "next/navigation";
+import { useModalStore } from "@/store/useModalStore";
 
 type DeviceProps = {
   logo: string;
@@ -13,7 +13,7 @@ type DeviceProps = {
 };
 
 const Device: React.FC<DeviceProps> = ({ logo, buttonText, route, index }) => {
-  const router = useRouter();
+  const { openModal } = useModalStore();
 
   return (
     <div className={styles.device}>
@@ -21,7 +21,7 @@ const Device: React.FC<DeviceProps> = ({ logo, buttonText, route, index }) => {
       <Button
         children={buttonText}
         variant="secondary"
-        onClick={() => router.push(`/upload${route}`)}
+        onClick={() => openModal("deviceModal")}
         disabled={index > 0}
       />
     </div>

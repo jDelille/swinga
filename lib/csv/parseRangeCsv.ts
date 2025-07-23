@@ -9,7 +9,6 @@ export function parseRangeCsv(file: File): Promise<ShotData[]> {
       beforeFirstChunk: (chunk) => {
         const lines = chunk.split(/\r\n|\n|\r/);
         const actualDataLines = lines.slice(2); // skip extra header lines
-        console.log(lines.splice(2))
         return actualDataLines.join("\n");
       },
       complete: (results) => resolve(results.data),

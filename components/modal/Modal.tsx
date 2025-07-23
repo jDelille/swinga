@@ -11,9 +11,19 @@ type ModalProps = {
   onClose: () => void;
   title: string;
   description: string;
+  buttonText: string;
+  onClick: () => void;
 };
 
-const Modal: React.FC<ModalProps> = ({ isOpen, body, onClose, title, description }) => {
+const Modal: React.FC<ModalProps> = ({
+  isOpen,
+  body,
+  onClose,
+  title,
+  description,
+  buttonText,
+  onClick
+}) => {
   if (!isOpen) return null;
 
   return (
@@ -35,11 +45,10 @@ const Modal: React.FC<ModalProps> = ({ isOpen, body, onClose, title, description
           <p>{description}</p>
         </div>
 
-
         <div className={styles.body}>{body}</div>
 
         <div className={styles.footer}>
-          <Button children={"Save"} variant="secondary" />
+          <Button children={buttonText ?? "Save"} variant="secondary" onClick={onClick} />
         </div>
       </div>
     </div>
