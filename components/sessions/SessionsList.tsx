@@ -7,6 +7,7 @@ import { RangeSession } from "@/types/rangeSession";
 import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import { db } from "@/firebase/config";
 import Session from "./Session";
+import SessionListControls from "./controls/SessionListControls";
 
 type SessionsProps = {};
 
@@ -66,13 +67,12 @@ const SessionsList: React.FC<SessionsProps> = () => {
     fetchSessions();
   }, [user]);
 
-  console.log(sessions)
-
   return (
     <div className={styles.sessions}>
       <h2>Sessions</h2>
+      <SessionListControls />
       {sessions.map((session) => (
-        <Session session={session} key={session.id}/>
+        <Session session={session} key={session.id} />
       ))}
     </div>
   );
