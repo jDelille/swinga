@@ -3,6 +3,7 @@ import styles from "./Sessions.module.scss";
 import { formatDateLong } from "@/hooks/format-date/FormatDateLong";
 import { getClubsUsedWithCounts } from "@/hooks/range-sessions/getClubsUsed";
 import { Star } from "lucide-react";
+import Link from "next/link";
 
 type SessionProps = {
   session: any;
@@ -30,7 +31,7 @@ const Session: React.FC<SessionProps> = ({ session }) => {
       </div>
 
       <div className={styles.controls}>
-        <p>View session</p>
+        <Link href={`/sessions/${session.id}`}>View session</Link>
         <Star size={20} color="gray" />
       </div>
     </div>

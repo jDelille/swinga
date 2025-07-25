@@ -1,20 +1,39 @@
 "use client";
-import React from "react";
 
+import React from "react";
 import createPlotlyComponent from "react-plotly.js/factory";
 import PlotlyBasic from "plotly.js-basic-dist";
 
 const Plot = createPlotlyComponent(PlotlyBasic);
 
-// === Dummy shot data ===
-const dummyShots = Array.from({ length: 50 }, () => ({
-  carry: 250 + (Math.random() - 0.5) * 20, // around 250 yds +/- 10
-  offline: (Math.random() - 0.5) * 40, // left/right dispersion +/- 20
-}));
+type ShotData = {
+  "Carry(yd)": string;
+  "Offline(yd)": string;
+  Club: string;
+  Index: string | number;
+};
 
-export default function ShotDispersionDemo() {
-  const x = dummyShots.map((s) => s.carry);
-  const y = dummyShots.map((s) => s.offline);
+type ShotDispersionProps = {
+  shots: ShotData[];
+};
+
+export default function ShotDispersion({ shots }: ShotDispersionProps) {
+  // Parse shot strings to numeric values with sign
+  const parseShotValue = (val: string) => {
+    if (!val) return 0;
+    const v = val.trim();
+    if (v.startsWith("L")) return -parseFloat(v.slice(1));
+    if (v.startsWith("R")) return parseFloat(v.slice(1));
+    return parseFloat(v);
+  };
+
+  const x = shots.map((s) => parseShotValue(s["Carry(yd)"]));
+  const y = shots.map((s) => parseShotValue(s["Offline(yd)"]));
+
+  // Add hover text with index and club
+  const hoverText = shots.map(
+    (s) => `Shot #${s.Index} - Club: ${s.Club}\nCarry: ${s["Carry(yd)"]} yds\nOffline: ${s["Offline(yd)"]} yds`
+  );
 
   // Mean & standard deviation for ellipse
   const meanX = avg(x);
@@ -27,10 +46,13 @@ export default function ShotDispersionDemo() {
   return (
     <div
       style={{
-        border: "1px solid #fff",
-        borderRadius: "8px",
-        padding: "10px",
+        border: "1px solid #ededef",
+        borderRadius: 8,
+        padding: "10px 0",
         background: "white",
+        width: "100%", // full width of parent container
+        maxWidth: 1240,
+        margin: "0 auto",
       }}
     >
       <Plot
@@ -45,70 +67,56 @@ export default function ShotDispersionDemo() {
               size: 10,
               color: "#00d1ff",
               opacity: 0.8,
-              line: {
-                width: 1,
-                color: "#fff", // border around each marker
-              },
-              symbol: "circle", // can use "square", "diamond", "x", etc.
+              line: { width: 1, color: "#fff" },
+              symbol: "circle",
             },
+            text: hoverText,
+            hoverinfo: "text",
           },
           {
             x: ellipse.x,
             y: ellipse.y,
             mode: "lines",
             name: "Dispersion Ellipse",
-            line: {
-              color: "#35bd23",
-              dash: "dashdot",
-              width: 3,
-            },
+            line: { color: "#35bd23", dash: "dashdot", width: 3 },
             fill: "toself",
-            fillcolor: "#35bd230d", // soft transparent fill
+            fillcolor: "#35bd230d",
+            hoverinfo: "skip",
           },
         ]}
         layout={{
-          font: {
-            family: "Roboto, sans-serif",
-            color: "#222",
-          },
+          font: { family: "Roboto, sans-serif", color: "#222" },
           autosize: true,
-          width: 612,
           title: {
-            text: "Shot Dispersion",
+            text: "",
             font: { family: "Arial Black", size: 20, color: "#333" },
           },
           xaxis: {
-            title: { text: "Total (yds)" },
+            title: { text: "Carry Distance (yds)" },
             showgrid: true,
             gridcolor: "#ddd",
             zeroline: false,
             tickfont: { color: "#666" },
           },
           yaxis: {
-            title: { text: "" },
+            title: { text: "Offline (yds)" },
             showgrid: true,
             gridcolor: "#eee",
             zeroline: true,
             zerolinecolor: "#ddd",
             tickfont: { color: "#666" },
           },
-          margin: { t: 50, r: 15, b: 50, l: 15 },
-          legend: {
-            orientation: "h",
-            y: -0.2,
-            font: { size: 12 },
-          },
+          margin: { t: 0, r: 0, b: 50, l: 50 },
+          legend: { orientation: "h", y: -0.2, font: { size: 12 } },
         }}
-        config={{
-          displayModeBar: false,
-          responsive: true,
-        }}
+        config={{ displayModeBar: false, responsive: true }}
+        style={{ width: "100%", height: 600 }}
       />
     </div>
   );
 }
 
-// === Simple helpers ===
+// === Helpers ===
 function avg(arr: number[]) {
   return arr.reduce((a, b) => a + b, 0) / arr.length;
 }
@@ -119,7 +127,6 @@ function stdDev(arr: number[]) {
   return Math.sqrt(variance);
 }
 
-// === Generate ellipse points ===
 function getEllipsePoints(
   cx: number,
   cy: number,
@@ -127,10 +134,7 @@ function getEllipsePoints(
   ry: number,
   numPoints = 100
 ) {
-  const theta = Array.from(
-    { length: numPoints },
-    (_, i) => (i / numPoints) * 2 * Math.PI
-  );
+  const theta = Array.from({ length: numPoints }, (_, i) => (i / numPoints) * 2 * Math.PI);
   const x = theta.map((t) => cx + rx * Math.cos(t));
   const y = theta.map((t) => cy + ry * Math.sin(t));
   return { x, y };

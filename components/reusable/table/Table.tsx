@@ -16,7 +16,12 @@ type TableProps = {
   setShots?: Dispatch<SetStateAction<ShotData[]>>;
   hideSelect?: boolean;
 };
+
 const Table: React.FC<TableProps> = ({ shots, setShots, hideSelect }) => {
+  if (!shots) {
+    return;
+  }
+
   const [selectedIds, setSelectedIds] = useState<Set<GridRowId>>(new Set());
   const [displayShots, setDisplayShots] = useState<ShotData[]>(shots);
 
@@ -46,7 +51,7 @@ const Table: React.FC<TableProps> = ({ shots, setShots, hideSelect }) => {
     .map((shot) => {
       const cleanClub = shot.Club.replace(/\s+/g, "-").toLowerCase();
       const rowId = `${cleanClub}-${shot.Index}`;
-      return { id: rowId, ...shot };
+      return { ...shot, id: rowId };
     });
 
   const columns: GridColDef[] = [
