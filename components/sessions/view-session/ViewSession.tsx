@@ -12,7 +12,9 @@ type ViewSessionProps = {};
 const ViewSession: React.FC<ViewSessionProps> = () => {
   const { id } = useParams();
   const { user } = useAuth();
+
   const [sessionData, setSessionData] = useState<any | null>(null);
+  const [selectedShotIds, setSelectedShotIds] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -28,12 +30,26 @@ const ViewSession: React.FC<ViewSessionProps> = () => {
     return <p>Loading session data...</p>;
   }
 
+  const handleSelectShot = (id: string) => {
+    setSelectedShotIds((prev) =>
+      prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
+    );
+  };
+
   return (
     <div className={styles.viewSession}>
       {sessionData?.shots?.length ? (
         <>
-          <ShotDispersion shots={sessionData.shots} />
-          <Table shots={sessionData.shots} />
+          <ShotDispersion
+            shots={sessionData.shots}
+            selectedShotIds={selectedShotIds}
+            onSelectShot={handleSelectShot}
+          />
+          <Table
+            shots={sessionData.shots}
+            selectedShotIds={selectedShotIds}
+            onSelectShot={handleSelectShot}
+          />
         </>
       ) : (
         <p>Loading session data...</p>

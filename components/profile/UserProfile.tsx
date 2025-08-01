@@ -47,6 +47,8 @@ const UserProfile: React.FC<UserProfileProps> = () => {
         onClose={() => closeModal("golfBag")}
         body={golfBagBody}
         description="View and edit your golf bag."
+        buttonText=""
+        onClick={() => console.log("nothing")}
       />
     </div>
   );

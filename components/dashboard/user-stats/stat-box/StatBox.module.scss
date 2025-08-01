@@ -1,0 +1,25 @@
+.statBox {
+    width: 48.7%;
+    border: 1px solid var(--border-color);
+    padding: 1rem;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+    position: relative;
+    h2 {
+        font-size: 18px;
+        font-weight: 400;
+    }
+    h3 {
+        font-size: 30px;
+        font-weight: 500;
+    }
+    .gripIcon {
+        position: absolute;
+        right: 1rem;
+        top: 1.3rem;
+        cursor: pointer;
+    }
+}

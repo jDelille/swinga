@@ -7,6 +7,7 @@ import {
   GridColDef,
   GridValueFormatter,
   GridRowId,
+  GridRowSelectionModel,
 } from "@mui/x-data-grid";
 import styles from "./Table.module.scss";
 import { ShotData } from "@/types/shotData";
@@ -15,9 +16,17 @@ type TableProps = {
   shots: ShotData[];
   setShots?: Dispatch<SetStateAction<ShotData[]>>;
   hideSelect?: boolean;
+  selectedShotIds: string[] | null;
+  onSelectShot: (val: string) => void;
 };
 
-const Table: React.FC<TableProps> = ({ shots, setShots, hideSelect }) => {
+const Table: React.FC<TableProps> = ({
+  shots,
+  setShots,
+  hideSelect,
+  selectedShotIds,
+  onSelectShot,
+}) => {
   if (!shots) {
     return;
   }
@@ -40,7 +49,7 @@ const Table: React.FC<TableProps> = ({ shots, setShots, hideSelect }) => {
     "7 Iron",
     "8 Iron",
     "9 Iron",
-    "Pitching Wedge",
+    "P-Wedge",
     "Sand Wedge",
     "Lob Wedge",
     "Putter",
@@ -49,7 +58,7 @@ const Table: React.FC<TableProps> = ({ shots, setShots, hideSelect }) => {
   const rows: GridRowsProp = displayShots
     .filter((shot) => validClubs.includes(shot.Club))
     .map((shot) => {
-      const cleanClub = shot.Club.replace(/\s+/g, "-").toLowerCase();
+      const cleanClub = shot.Club.replace(/\s+/g, "-");
       const rowId = `${cleanClub}-${shot.Index}`;
       return { ...shot, id: rowId };
     });
@@ -63,7 +72,7 @@ const Table: React.FC<TableProps> = ({ shots, setShots, hideSelect }) => {
     {
       field: "Club",
       headerName: "Club",
-      width: 50,
+      width: 65,
     },
     {
       field: "Ball Speed(mph)",
@@ -175,6 +184,18 @@ const Table: React.FC<TableProps> = ({ shots, setShots, hideSelect }) => {
     setSelectedIds(new Set());
   };
 
+  const selectedIdsSet = new Set(selectedShotIds);
+
+  const rowSelectionModel: GridRowSelectionModel = {
+    type: "include",
+    ids: selectedIdsSet,
+  };
+
+  const handleRowClick = (params: any) => {
+    const clickedId = params.id.toString();
+    onSelectShot(clickedId);
+  };
+
   return (
     <div className={styles.table}>
       {selectedIds.size > 0 && (
@@ -186,16 +207,17 @@ const Table: React.FC<TableProps> = ({ shots, setShots, hideSelect }) => {
         <DataGrid
           rows={rows}
           columns={columns}
-          checkboxSelection={!hideSelect}
+          checkboxSelection
+          rowSelectionModel={rowSelectionModel}
+          onRowClick={handleRowClick}
           onRowSelectionModelChange={(selection) => {
-            if (typeof selection === "object" && "ids" in selection) {
-              setSelectedIds(new Set(selection.ids));
+            if ("ids" in selection) {
+              const newSelected = Array.from(selection.ids) as string[];
+              onSelectShotMultiple(newSelected);
             }
           }}
           sx={{
-            "& .MuiDataGrid-columnHeaders": {
-              backgroundColor: "#f4f4f4",
-            },
+            "& .MuiDataGrid-columnHeaders": { backgroundColor: "#f4f4f4" },
             "& .MuiDataGrid-columnHeaderTitle": {
               fontWeight: "600",
               fontSize: "12px",
@@ -207,9 +229,7 @@ const Table: React.FC<TableProps> = ({ shots, setShots, hideSelect }) => {
             },
             "& .MuiDataGrid-row": {
               fontSize: "12px",
-              "&:hover": {
-                backgroundColor: "#f5f5f5",
-              },
+              "&:hover": { backgroundColor: "#f5f5f5" },
             },
             "& .MuiDataGrid-cell": {
               textAlign: "center",
@@ -223,5 +243,9 @@ const Table: React.FC<TableProps> = ({ shots, setShots, hideSelect }) => {
     </div>
   );
 };
+
+function onSelectShotMultiple(ids: string[]) {
+  console.log("Multiple selection:", ids);
+}
 
 export default Table;
