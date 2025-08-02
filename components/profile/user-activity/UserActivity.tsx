@@ -1,6 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./UserActivity.module.scss";
 import Sessions from "./sessions/Sessions";
+import Challenges from "./challenges/Challenges";
+import Badges from "./badges/Badges";
+import Feed from "./feed/Feed";
+import Stats from "./stats/Stats";
 
 type UserActivityProps = {};
 
@@ -46,7 +50,11 @@ const UserActivity: React.FC<UserActivityProps> = () => {
         </ul>
       </div>
       <div className={styles.section}>
+        {activeTab === "Feed" && <Feed />}
         {activeTab === "Sessions" && <Sessions />}
+        {activeTab === "Challenges" && <Challenges />}
+        {activeTab === "Badges" && <Badges />}
+        {activeTab === "Stats" && <Stats />}
       </div>
     </div>
   );
