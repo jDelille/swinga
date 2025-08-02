@@ -1,0 +1,66 @@
+.badgeListContainer {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 2rem;
+  .header {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+    .title {
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+    .earned {
+      margin-bottom: 5px;
+      font-size: 12px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: var(--secondary-text-color);
+
+    }
+    .badgeProgressBar {
+      background-color: #e3e3e9;
+      width: 100%;
+      height: 7px;
+      border-radius: 20px;
+      .progress {
+        background-color: var(--accent);
+        height: 100%;
+        border-radius: 20px;
+      }
+    }
+  }
+  .badge {
+    display: flex;
+    padding: 1rem 0;
+    border-radius: 8px;
+    gap: 2rem;
+    border-bottom: 1px solid var(--border-color);
+    &:nth-last-child(1) {
+        border: none;
+    }
+    .icon {
+      border: 1px solid black;
+      width: 50px;
+      height: 50px;
+    }
+    .text {
+      display: flex;
+      flex-direction: column;
+    }
+    h2 {
+      font-size: 16px;
+      font-weight: 500;
+    }
+    p {
+      font-size: 12px;
+      font-style: italic;
+    }
+    &:nth-of-type(odd) {
+    //   background-color: #f3f3f8;
+    }
+  }
+}

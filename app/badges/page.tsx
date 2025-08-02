@@ -1,14 +1,13 @@
-import SinglePageLayout from '@/components/layout/SinglePageLayout';
-import React from 'react';
+import BadgeList from "@/components/badge-list/BadgeList";
+import SinglePageLayout from "@/components/layout/SinglePageLayout";
+import React from "react";
 
-type BadgePageProps = {
- 
- }
+type BadgePageProps = {};
 const BadgePage: React.FC<BadgePageProps> = () => {
   return (
     <div className="page">
-        <SinglePageLayout>
-            <h2>Badges</h2>
+      <SinglePageLayout>
+        <BadgeList />
       </SinglePageLayout>
     </div>
   );
