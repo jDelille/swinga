@@ -18,8 +18,8 @@ const UserProfile: React.FC<UserProfileProps> = () => {
   const golfBagBody = (
     <div className={styles.golfBag}>
       <ul>
-        {golfBag.map((club) => (
-          <li className={styles.club}>
+        {golfBag.map((club, index) => (
+          <li className={styles.club} key={index}>
             <div>
               <SquarePen size={15} cursor={"pointer"}/>
             </div>
@@ -40,7 +40,7 @@ const UserProfile: React.FC<UserProfileProps> = () => {
   return (
     <div className={styles.userProfile}>
       <UserOverview />
-      {/* <UserActivity /> */}
+      <UserActivity />
       <Modal
         isOpen={modals["golfBag"]}
         title={"Your Golf Bag"}

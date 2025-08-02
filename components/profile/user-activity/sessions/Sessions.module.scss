@@ -1,0 +1,47 @@
+.sessionsContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+  .session {
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: row;
+    -webkit-box-align: center;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+
+    .typeOfClubs {
+      font-size: 12px;
+      padding: 3px 10px;
+      border-radius: 50px;
+      background-color: #f6f6f6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 60px;
+    }
+
+    .numOfShots {
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .date {
+      font-size: 12px;
+      width: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .name {
+      font-size: 12px;
+    }
+    svg {
+      position: relative;
+      top: -2px;
+      cursor: pointer;
+    }
+  }
+}

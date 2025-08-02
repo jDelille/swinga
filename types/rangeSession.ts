@@ -6,6 +6,6 @@ export type Shot = {
 
 export type RangeSession = {
   id: string;
-  // createdAt: any; // Firestore Timestamp
+  createdAt?: any; // Firestore Timestamp
   shots: Shot[];
 };

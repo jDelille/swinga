@@ -3,5 +3,5 @@ import { format } from "date-fns";
 
 export function formatDateMedium(timestamp: Timestamp) {  
     const date = timestamp.toDate();
-    return format(date, "MMMM yyyy");
+    return format(date, "MMM d, yyyy");
 }

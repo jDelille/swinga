@@ -32,7 +32,7 @@ const UserOverview: React.FC<UserOverviewProps> = () => {
         />
       </div>
       <div className={styles.text}>
-        <h2>{userData.name}</h2>
+        <h2>{userData.name} <span className={styles.rank}>Beginner</span></h2>
         <h3>{userData.location}</h3>
         <p>Member since {formatDateMedium(userData.createdAt)}</p>
 
