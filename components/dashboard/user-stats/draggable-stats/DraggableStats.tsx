@@ -3,7 +3,7 @@ import { DndContext, closestCenter, DragEndEvent } from "@dnd-kit/core";
 import {
   SortableContext,
   useSortable,
-  verticalListSortingStrategy,
+  rectSortingStrategy,
   arrayMove,
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
@@ -39,7 +39,7 @@ const DraggableStats: React.FC<DraggableStatsProps> = ({
       <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
         <SortableContext
           items={selectedStats.map((s) => s.name)}
-          strategy={verticalListSortingStrategy}
+          strategy={rectSortingStrategy}
         >
           {selectedStats.map((stat) => (
             <SortableStatBox key={stat.name} stat={stat} />
