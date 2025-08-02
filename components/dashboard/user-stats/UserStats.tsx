@@ -62,7 +62,7 @@ const UserStats: React.FC<UserStatsProps> = () => {
       />
       <div className={styles.addMore} onClick={() => openModal("addMoreStats")}>
         <h2>{selectedStats.length === 6 ? "Edit stats" : "Add more stats"}</h2>
-        <Grid2x2Plus size={16} />
+        <Grid2x2Plus size={15} strokeWidth={2}/>
       </div>
 
       <Modal
