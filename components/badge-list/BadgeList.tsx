@@ -1,14 +1,36 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import styles from "./BadgeList.module.scss";
 import { badges } from "@/badges/badges";
 import Badge from "./Badge";
+import { usePopupStore } from "@/store/usePopupStore";
+import Popup from "../reusable/popup/Popup";
+import { Badge as BadgeType } from "@/types/badge";
 
 type BadgeListProps = {};
 
 const BadgeList: React.FC<BadgeListProps> = () => {
-  console.log(badges);
+  const { popups, openPopup, closePopup } = usePopupStore();
+
+  const [selectedBadge, setSelectedBadge] = useState<BadgeType | null>(null);
 
   const percentComplete = Math.round((3 / badges.length) * 100);
+
+  const handleBadgeClick = (badge: BadgeType) => {
+    setSelectedBadge(badge);
+    openPopup("badgePopup");
+  };
+
+
+  const popupBody = selectedBadge ? (
+    <div className={styles.badgeBody}>
+      <div className={styles.badgeIcon}></div>
+      <div className={styles.badgeName}>{selectedBadge.label}</div>
+      <div className={styles.badgeDescription}>{selectedBadge.description}</div>
+      <div className={styles.sessionId}>{`You earned this badge from session (sessionId)`}</div>
+    </div>
+  ) : null;
 
   return (
     <div className={styles.badgeListContainer}>
@@ -24,9 +46,20 @@ const BadgeList: React.FC<BadgeListProps> = () => {
           ></div>
         </div>
       </div>
-      {badges.map((badge) => (
-        <Badge key={badge.id} badge={badge} />
+      {badges.map((badge, index) => (
+        <Badge
+          key={badge.id}
+          badge={badge}
+          onClick={() => handleBadgeClick(badge)}
+        />
       ))}
+
+      {/* Popup */}
+      <Popup
+        isOpen={popups["badgePopup"]}
+        onClose={() => closePopup("badgePopup")}
+        body={popupBody}
+      />
     </div>
   );
 };

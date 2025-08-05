@@ -5,7 +5,7 @@ import styles from "./UserStats.module.scss";
 import StatBox from "./stat-box/StatBox";
 import { Grid2x2Plus } from "lucide-react";
 import { useModalStore } from "@/store/useModalStore";
-import Modal from "@/components/modal/Modal";
+import Modal from "@/components/reusable/modal/Modal";
 import stats from "@/constants/userStats";
 import DraggableStats from "./draggable-stats/DraggableStats";
 

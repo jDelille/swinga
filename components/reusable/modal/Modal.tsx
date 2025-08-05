@@ -1,9 +1,9 @@
 "use client";
 
 import React from "react";
-import styles from "./Modal.module.scss";
 import { X } from "lucide-react";
-import Button from "../reusable/button/Button";
+import Button from "../button/Button";
+import styles from './Modal.module.scss';
 
 type ModalProps = {
   isOpen: boolean;

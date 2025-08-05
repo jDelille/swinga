@@ -5,7 +5,7 @@ import styles from "./UserProfile.module.scss";
 import UserOverview from "./user-overview/UserOverview";
 import UserActivity from "./user-activity/UserActivity";
 import { useModalStore } from "@/store/useModalStore";
-import Modal from "../modal/Modal";
+import Modal from "../reusable/modal/Modal";
 import { useGolfBag } from "@/hooks/golf-bag/getGolfBag";
 import {SquarePen} from 'lucide-react';
 import Button from "../reusable/button/Button";

@@ -6,7 +6,7 @@ import Device from "./Device";
 import { devices } from "./devices";
 import CsvUpload from "../csv-upload/CsvUpload";
 import { useModalStore } from "@/store/useModalStore";
-import Modal from "@/components/modal/Modal";
+import Modal from "@/components/reusable/modal/Modal";
 import { ShotData } from "@/types/shotData";
 import { uploadRangeSession } from "@/lib/range-session/uploadRangeSession";
 
