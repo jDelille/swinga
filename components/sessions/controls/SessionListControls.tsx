@@ -40,7 +40,7 @@ const SessionListControls: React.FC<SessionListControlsProps> = () => {
       </div>
       <div className={styles.clubType}>
         {clubs.map((club) => (
-          <ClubType club={club} onClick={handleClubClick} activeFilter={activeFilter}/>
+          <ClubType club={club} onClick={handleClubClick} activeFilter={activeFilter} key={club}/>
         ))}
       </div>
     </div>

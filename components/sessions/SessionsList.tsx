@@ -67,6 +67,8 @@ const SessionsList: React.FC<SessionsProps> = () => {
     fetchSessions();
   }, [user]);
 
+  console.log(sessions)
+
   return (
     <div className={styles.sessions}>
       <h2>Sessions</h2>

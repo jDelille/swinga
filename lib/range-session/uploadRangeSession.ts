@@ -8,6 +8,7 @@ import {
 import { auth, db } from "@/firebase/config";
 import { badges } from "@/badges/badges";
 import { getUnlockedBadgesFromShots } from "../badges/getUnlockedBadgesFromShots";
+import { updateUserShotAverages } from "@/firebase/collections/userShotAverages";
 
 export type ShotData = {
   Club: string;
@@ -122,7 +123,7 @@ export async function uploadRangeSession(shots: ShotData[]) {
   const currentBadgeTypes = badgesSnap.docs.map((doc) => doc.data().badgeType);
 
   // Find badges unlocked from shots
-  const unlockedBadges = getUnlockedBadgesFromShots(shots);
+  const unlockedBadges = getUnlockedBadgesFromShots(shots as any);
 
   // Filter badges user doesn't have yet
   const newBadges = unlockedBadges.filter(
@@ -160,6 +161,10 @@ export async function uploadRangeSession(shots: ShotData[]) {
       read: false,
     });
   }
+
+  // Add shot averages
+
+  await updateUserShotAverages(shots);
 
   return sessionRef.id;
 }

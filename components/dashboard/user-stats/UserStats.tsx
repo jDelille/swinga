@@ -1,53 +1,86 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./UserStats.module.scss";
-import StatBox from "./stat-box/StatBox";
 import { Grid2x2Plus } from "lucide-react";
 import { useModalStore } from "@/store/useModalStore";
 import Modal from "@/components/reusable/modal/Modal";
-import stats from "@/constants/userStats";
+import stats from "@/constants/userStats"; // string[]
+import { mapFirestoreToStats, Stat } from "@/constants/userStats"; // map function & type
 import DraggableStats from "./draggable-stats/DraggableStats";
+import { auth, db } from "@/firebase/config";
+import { doc, getDoc } from "firebase/firestore";
 
 type UserStatsProps = {};
 
+const MAX_STATS = 6;
+
 const UserStats: React.FC<UserStatsProps> = () => {
   const { modals, openModal, closeModal } = useModalStore();
-  const [selectedStats, setSelectedStats] = useState<
-    { name: string; value: string }[]
-  >(stats.slice(0, 4));
+  const [firestoreStats, setFirestoreStats] = useState<Stat[]>([]);
+  const [selectedStats, setSelectedStats] = useState<Stat[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const MAX_STATS = 6;
+  useEffect(() => {
+    if (!auth.currentUser) return;
 
-  const toggleStat = (stat: { name: string; value: string }) => {
-    setSelectedStats((prev) => {
-      const alreadySelected = prev.find((s) => s.name === stat.name);
-      if (alreadySelected) {
-        return prev.filter((s) => s.name !== stat.name);
-      } else if (prev.length < MAX_STATS) {
-        return [...prev, stat];
+    const fetchStats = async () => {
+      const uid = auth.currentUser!.uid;
+      const statsDoc = doc(db, "users", uid, "averages", "general");
+      const snapshot = await getDoc(statsDoc);
+      if (snapshot.exists()) {
+        const data = snapshot.data();
+        
+        const mappedStats = mapFirestoreToStats(data);
+        setFirestoreStats(mappedStats);
+        // Initialize selectedStats with first 4 firestore stats (or empty)
+        setSelectedStats(mappedStats.slice(0, 4));
       } else {
-        // optionally show a toast or warning
-        return prev;
+        setFirestoreStats([]);
+        setSelectedStats([]);
+      }
+      setLoading(false);
+    };
+
+    fetchStats();
+  }, []);
+
+  console.log(firestoreStats)
+
+  const toggleStat = (statName: string) => {
+    setSelectedStats((prev) => {
+      const alreadySelected = prev.find((s) => s.name === statName);
+      if (alreadySelected) {
+        // Remove it
+        return prev.filter((s) => s.name !== statName);
+      } else if (prev.length < MAX_STATS) {
+        // Add new stat with value from firestoreStats or default "N/A"
+        const firestoreStat = firestoreStats.find((s) => s.name === statName);
+        return [
+          ...prev,
+          firestoreStat || { name: statName, value: "N/A" },
+        ];
+      } else {
+        return prev; // max reached, no change
       }
     });
   };
 
   const addMoreStatsBody = (
     <div className={styles.modalBody}>
-      {stats.map((stat) => {
-        const isSelected = selectedStats.find((s) => s.name === stat.name);
+      {stats.map((statName) => {
+        const isSelected = selectedStats.some((s) => s.name === statName);
         const isDisabled = !isSelected && selectedStats.length >= MAX_STATS;
 
         return (
           <div
-            key={stat.name}
+            key={statName}
             className={`${isSelected ? styles.selected : styles.notSelected} ${
               isDisabled ? styles.disabled : ""
             }`}
-            onClick={() => !isDisabled && toggleStat(stat)}
+            onClick={() => !isDisabled && toggleStat(statName)}
           >
-            <p>{stat.name}</p>
+            <p>{statName}</p>
           </div>
         );
       })}
@@ -61,8 +94,8 @@ const UserStats: React.FC<UserStatsProps> = () => {
         setSelectedStats={setSelectedStats}
       />
       <div className={styles.addMore} onClick={() => openModal("addMoreStats")}>
-        <h2>{selectedStats.length === 6 ? "Edit stats" : "Add more stats"}</h2>
-        <Grid2x2Plus size={15} strokeWidth={2}/>
+        <h2>{selectedStats.length === MAX_STATS ? "Edit stats" : "Add more stats"}</h2>
+        <Grid2x2Plus size={15} strokeWidth={2} />
       </div>
 
       <Modal
