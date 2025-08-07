@@ -1,0 +1,65 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  width: fit-content;
+  -webkit-box-flex: 0;
+  flex-grow: 0;
+  width: 100%;
+  border-radius: 8px;
+
+  margin: 0 auto;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  li {
+    display: flex;
+    flex-direction: row;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    border-radius: 8px;
+    width: 100%;
+    padding: 12px 24px;
+    &:nth-of-type(odd) {
+      background-color: rgb(243, 243, 248);
+    }
+    .rank {
+      font-size: 14px;
+      font-weight: 500;
+      color: rgb(77, 77, 77);
+      margin-right: 3rem;
+    }
+    .picture {
+      background-color: orange;
+      position: relative;
+      display: flex;
+      -webkit-box-align: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-family: Inter, Helvetica, Arial, sans-serif;
+      font-size: 1.25rem;
+      line-height: 1;
+      border-radius: 50%;
+      overflow: hidden;
+      user-select: none;
+      height: 24px;
+      width: 24px;
+      margin-right: 1rem;
+    }
+    .name {
+        font-size: 12px;
+        font-weight: 500;
+    }
+
+    .points {
+        margin-left: auto;
+        font-size: 12px;
+        font-weight: 500;
+    }
+  }
+}

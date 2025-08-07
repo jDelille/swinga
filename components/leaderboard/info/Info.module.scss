@@ -1,0 +1,30 @@
+.infoContainer {
+  display: flex;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  width: fit-content;
+  -webkit-box-flex: 0;
+  flex-grow: 0;
+  max-width: 725px;
+  padding: 16px 24px;
+  background-color: rgb(243, 243, 248);
+  border-radius: 8px;
+  margin: 0 auto;
+  margin-top: 3rem;
+  h2 {
+    font-size: 14px;
+    font-weight: 600;
+  }
+  p {
+    margin-top: 2rem;
+    font-size: 14px;
+  }
+  span {
+    margin-top: 1rem;
+    font-size: 12px;
+    text-align: center;
+  }
+}

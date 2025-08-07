@@ -26,6 +26,7 @@ const Navbar: React.FC<NavbarProps> = ({ isAuth, user }) => {
 
   const router = useRouter();
 
+
   const handleStartTrialClick = () => {
     console.log("Start Trial...");
   };
