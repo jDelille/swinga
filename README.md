@@ -16,6 +16,9 @@
 
 ---
 
+## 📝 Jira
+https://swinga.atlassian.net/jira/software/projects/OPS/boards/1
+
 ## 🚀 Getting Started
 
 ### 1. Clone the repo
