@@ -1,7 +1,6 @@
 @use "../../styles/mixins" as mixin;
 
 .userProfile,
-.lessonPlan,
 .challenges,
 .weekRecap,
 .finishProfile,
@@ -84,9 +83,6 @@
   }
 }
 
-.lessonPlan {
-  height: 517px;
-}
 
 .challenges {
   height: 250px;
