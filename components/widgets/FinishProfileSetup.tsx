@@ -54,9 +54,9 @@ const FinishProfileSetup: React.FC<FinishProfileSetupProps> = ({ user }) => {
         {steps.map((step, idx) => (
           <li key={idx}>
             {step.completed ? (
-              <CheckmarkIcon size={20} />
+              <CheckmarkIcon size={20} color="#2f89fc" />
             ) : (
-              <CheckmarkIconLight size={20} />
+              <CheckmarkIconLight size={20} color="#2f89fc" />
             )}
             {step.label}
           </li>

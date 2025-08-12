@@ -34,7 +34,7 @@ const UserStats: React.FC<UserStatsProps> = () => {
         const mappedStats = mapFirestoreToStats(data);
         setFirestoreStats(mappedStats);
         // Initialize selectedStats with first 4 firestore stats (or empty)
-        setSelectedStats(mappedStats.slice(0, 4));
+        setSelectedStats(mappedStats.slice(0, 6));
       } else {
         setFirestoreStats([]);
         setSelectedStats([]);

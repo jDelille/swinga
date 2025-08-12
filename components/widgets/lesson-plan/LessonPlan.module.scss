@@ -1,11 +1,11 @@
 .lessonPlan {
-    background-color: var(--secondary-bg-color);
+    background-color: var(--bg-color);
     width: 279px;
     height: 189px;
     border-radius: 6px;
     border: 1px solid var(--border-color);
     height: 517px;
-    
+
     .lessonPlanHeader {
         padding: 10px 1rem;
         font-size: 14px;
@@ -30,13 +30,13 @@
         padding: 1rem;
         gap: 10px;
         .lesson {
-            background-color: orange;
+            // background-color: orange;
             width: 100%;
             height: 135px;
             border-radius: 12px;
             position: relative;
             .priority {
-                background-color: red;
+                // background-color: red;
                 padding: 5px 15px;
                 border-radius: 22px;
                 font-size: 12px;

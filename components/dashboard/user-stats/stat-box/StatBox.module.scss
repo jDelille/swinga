@@ -1,18 +1,21 @@
 .statBox {
-  width: 304px;
+  width: 100%;
   border: 1px solid var(--border-color);
+  background-color: var(--bg-color);
   padding: 1rem;
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  border-radius: 16px;
+  height: 125px;
   h2 {
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 400;
   }
   h3 {
-    font-size: 24px;
-    font-weight: 500;
+    font-size: 22px;
+    font-weight: 600;
   }
   .gripIcon {
     position: absolute;

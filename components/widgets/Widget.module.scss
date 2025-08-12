@@ -5,12 +5,12 @@
 .weekRecap,
 .finishProfile,
 .notifications {
-  background-color: var(--secondary-bg-color);
+  background-color: var(--bg-color);
   width: 279px;
   height: 189px;
   border-radius: 6px;
   padding: 10px 1rem;
-  // @include mixin.box-shadow;
+      // box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   border: 1px solid var(--border-color);
   .startMessage {
     display: flex;
