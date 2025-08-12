@@ -1,0 +1,22 @@
+.golfBagWidget {
+  width: 279px;
+  height: fit-content;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-color);
+  .header {
+    padding: 10px 1rem;
+    font-size: 14px;
+    border-bottom: 1px solid var(--border-color);
+  }
+  ul {
+    padding: 10px 1rem;
+    display: flex;
+    flex-direction: column;
+    
+    li {
+        font-size: 12px;
+        padding: 10px 0;
+    }
+  }
+}

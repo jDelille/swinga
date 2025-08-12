@@ -8,4 +8,5 @@ export type GolfBag = {
     manualYardage: number | null;
     name: string;
     type: string;
+    id: string;
 }
