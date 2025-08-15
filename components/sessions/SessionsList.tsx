@@ -67,15 +67,35 @@ const SessionsList: React.FC<SessionsProps> = () => {
     fetchSessions();
   }, [user]);
 
-  console.log(sessions)
+  console.log(sessions);
+
+  const favoriteSessions = [];
 
   return (
     <div className={styles.sessions}>
       <h2>Sessions</h2>
       <SessionListControls />
-      {sessions.map((session) => (
-        <Session session={session} key={session.id} />
-      ))}
+      <div className={styles.favoriteSessions}>
+        <p>Favorite sessions</p>
+        {favoriteSessions.length > 0 ? (
+          <div className={styles.sessionGridFavorites}></div>
+        ) : (
+          <div className={styles.noFavorites}>
+            <p>Favorite a session to see it here.</p>
+          </div>
+        )}
+      </div>
+      <div className={styles.sessionList}>
+        <div className={styles.sessionsHeader}>
+          <p>All sessions</p>
+        <span>Filter</span>
+        </div>
+        <div className={styles.sessionGrid}>
+          {sessions.map((session) => (
+            <Session session={session} key={session.id} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

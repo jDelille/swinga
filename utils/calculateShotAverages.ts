@@ -33,14 +33,14 @@ export function calculateAverageStat(
 }
 
 /**
- * NEW: Calculate all generic averages and return an object
+ * Calculate all generic averages and return an object
  */
 export function calculateGenericAverages(shots: Shot[]) {
   return {
     offlineAvg: calculateAverageStat(shots, "Offline(yd)", true),
     clubPathAvg: calculateAverageStat(shots, "Club Path", true),
     faceAngleAvg: calculateAverageStat(shots, "Face Angle", true),
-    // add more generic stats here if you want
+    // add more generic stats here 
   };
 }
 
@@ -48,9 +48,6 @@ export function calculateGenericAverages(shots: Shot[]) {
  * Map Firestore data to displayable stats for UI
  */
 export const mapFirestoreToStats = (data: any): Stat[] => {
-
-    console.log(data)
-
   return [
     {
       name: "Avg Offline (yd)",
@@ -72,8 +69,8 @@ export const mapFirestoreToStats = (data: any): Stat[] => {
     },
     {
       name: "Shots Tracked",
-      value: data.shotCount != null ? `${data.shotCount}` : "0",
+      value: data.genericAverages?.shotCount != null ? `${data.genericAverages.shotCount}` : "0",
     },
-    // add more stats mapping if needed
+    // add more stats 
   ];
 };

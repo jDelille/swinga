@@ -32,7 +32,7 @@ const Session: React.FC<SessionProps> = ({ session }) => {
 
       <div className={styles.controls}>
         <Link href={`/sessions/${session.id}`}>View session</Link>
-        <Star size={20} color="gray" />
+        <Star size={20} color="gray" className={styles.favoriteBtn}/>
       </div>
     </div>
   );
