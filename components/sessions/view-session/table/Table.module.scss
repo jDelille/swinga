@@ -1,0 +1,90 @@
+.tableWrapper {
+  position: relative;
+  width: 100%;
+  background-color: var(--bg-color);
+  max-height: 500px;
+  overflow-y: auto;
+  margin-top: 2rem;
+  border-radius: 6px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+  scrollbar-width: thin;
+  scrollbar-color: #e2e7ee transparent;
+}
+.tableContainer {
+  position: relative;
+  overflow-x: auto;
+  overflow-y: hidden;
+  cursor: grab;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  table {
+    width: 100%;
+    min-width: max-content;
+    border-collapse: collapse;
+    text-align: center;
+    .tableHeader {
+      font-size: 12px;
+      tr {
+        display: flex;
+        gap: 0rem;
+        th {
+          font-weight: 600;
+          text-transform: uppercase;
+          padding: 1rem;
+          pointer-events: none;
+          font-size: 11px;
+          text-align: center;
+          width: calc(100% / 17);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    }
+    tbody {
+      tr {
+        display: flex;
+        font-size: 12px;
+        border-top: 1px solid var(--border-color);
+        font-weight: 500;
+        td {
+          padding: 0 1rem;
+          width: calc(100% / 17);
+          height: 56px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          &:nth-child(2),
+          &:nth-child(6),
+          &:nth-child(10),
+          &:nth-child(14) {
+            border-right: 1px solid var(--border-color);
+          }
+        }
+      }
+    }
+  }
+}
+// Fade overlay
+
+.tableFade {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60px;
+  height: 100%;
+  pointer-events: none;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 10%,
+    var(--bg-color, #fff) 90%
+  );
+  transition: opacity 0.2s ease;
+  z-index: 2;
+  &.hidden {
+    opacity: 0;
+  }
+}

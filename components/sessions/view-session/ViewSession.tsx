@@ -1,12 +1,13 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import styles from "./ViewSession.module.scss";
 import { getSession } from "@/hooks/range-sessions/getSession";
-import Table from "@/components/reusable/table/Table";
-import ShotDispersion from "./shot-graph/ShotGraph";
 import { useParams } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
+import SessionAverages from "./session-averages/SessionAverages";
+import AveragesBarChart from "./averages-bar-chart/AveragesBarChart";
+import DispersionGraph from "./dispersion-graph/DispersionGraph";
+import Table from "./table/Table";
 
 type ViewSessionProps = {};
 const ViewSession: React.FC<ViewSessionProps> = () => {
@@ -37,23 +38,11 @@ const ViewSession: React.FC<ViewSessionProps> = () => {
   };
 
   return (
-    <div className={styles.viewSession}>
-      {sessionData?.shots?.length ? (
-        <>
-          <ShotDispersion
-            shots={sessionData.shots}
-            selectedShotIds={selectedShotIds}
-            onSelectShot={handleSelectShot}
-          />
-          <Table
-            shots={sessionData.shots}
-            selectedShotIds={selectedShotIds}
-            onSelectShot={handleSelectShot}
-          />
-        </>
-      ) : (
-        <p>Loading session data...</p>
-      )}
+    <div>
+      <SessionAverages />
+      <AveragesBarChart />
+      <Table shots={sessionData.shots} />
+      <DispersionGraph />
     </div>
   );
 };

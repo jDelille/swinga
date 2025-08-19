@@ -7,13 +7,9 @@ type SessionProps = {
  
  }
 const Session: React.FC<SessionProps> = () => {
-
-
-  
   return (
     <div className="page">
       <SinglePageLayout>
-        <h2>Session</h2>
         <ViewSession />
       </SinglePageLayout>
     </div>

@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import styles from "./ThemeToggle.module.scss";
 import { useTheme } from "next-themes";
 import { ThemeIcon } from "@/icons";
 
