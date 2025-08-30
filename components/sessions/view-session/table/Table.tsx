@@ -51,6 +51,17 @@ const Table: React.FC<TableProps> = ({ shots }) => {
 
   return (
   <div className={styles.tableWrapper}>
+  <div className={styles.scrollWrapper}>
+    {/* Sticky header */}
+    <div className={styles.stickyHeader}>
+      {columns.map((col) => (
+        <div key={col} className={styles.stickyCell}>
+          {col.replace("(mph)", "").replace("(yd)", "")}
+        </div>
+      ))}
+    </div>
+
+    {/* Scrollable table body */}
     <div
       className={styles.tableContainer}
       ref={(el) => {
@@ -58,37 +69,20 @@ const Table: React.FC<TableProps> = ({ shots }) => {
         containerRef.current = el;
       }}
     >
-      <table>
-        <thead className={styles.tableHeader}>
-          <tr>
-            {columns.map((col) => (
-              <th key={col}>
-                {col.replace("(mph)", "").replace("(yd)", "")}
-              </th>
-            ))}
-          </tr>
-        </thead>
-
-        <tbody>
-          {shots
-            .filter((shot) => shot.Club)
-            .map((shot) => (
-              <tr key={shot.id}>
-                {columns.map((col) => {
-                  const key = Object.keys(shot).find((k) => k === col);
-                  return <td key={col}>{key ? shot[key] : ""}</td>;
-                })}
-              </tr>
-            ))}
-        </tbody>
-      </table>
+      {shots.map((shot) => (
+        <div key={shot.id} className={styles.row}>
+          {columns.map((col) => {
+            const key = Object.keys(shot).find((k) => k === col);
+            return <div key={col} className={styles.cell}>{key ? shot[key] : ""}</div>;
+          })}
+        </div>
+      ))}
     </div>
-
-    {/* fade overlay outside scroll container */}
-    <div
-      className={`${styles.tableFade} ${fadeHidden ? styles.hidden : ""}`}
-    />
   </div>
+
+  {/* Fade overlay on top of everything */}
+  <div className={`${styles.tableFade} ${fadeHidden ? styles.hidden : ""}`} />
+</div>
 );
 };
 
