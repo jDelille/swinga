@@ -8,7 +8,7 @@
 
 ## ✨ Features
 
-- 📁 **Import** session data from popular devices like Square Golf, Rapsodo, and Garmin
+- 📁 **Import** session data from popular devices like Square Golf, Rapsodo, GSPro, etc.
 - 📊 **Visualize** key stats like carry distance, ball speed, spin rate, and more
 - 🧠 **Analyze** progress over time with intuitive charts and comparisons
 - 🏅 **Earn Badges** for milestones and consistency
